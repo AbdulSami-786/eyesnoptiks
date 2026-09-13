@@ -162,12 +162,37 @@
   color: var(--color-primary);
 }
 
-/* -------- Bestsellers -------- */
+/* -------- Bestsellers (horizontal scroll) -------- */
 
 .product-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
   gap: 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 12px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary) var(--color-grey-100);
+}
+
+.product-grid::-webkit-scrollbar {
+  height: 8px;
+}
+
+.product-grid::-webkit-scrollbar-track {
+  background: var(--color-grey-100);
+  border-radius: 8px;
+}
+
+.product-grid::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 8px;
+}
+
+.product-grid > * {
+  flex: 0 0 auto;
+  width: 240px;
+  scroll-snap-align: start;
 }
 
 .bestsellers-section__cta {
@@ -254,10 +279,6 @@
   .collections-grid {
     grid-template-columns: repeat(3, 1fr);
   }
-
-  .product-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
 }
 
 @media (max-width: 780px) {
@@ -281,12 +302,12 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .product-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
   .trust-strip__grid {
     grid-template-columns: 1fr;
+  }
+
+  .product-grid > * {
+    width: 200px;
   }
 }
 
