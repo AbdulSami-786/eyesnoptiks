@@ -4,10 +4,19 @@ import {
   getProductById,
   getProductsByCollection,
   getCollectionBySlug,
+  collections,
 } from '../data/products'
 import { useCart } from '../context/CartContext'
 import ProductCard from '../components/ProductCard'
 import './ProductDetail.css'
+
+// Only these collection slugs are contact lenses (Diamond, Elite, Glow,
+// Natural, One Day, Gold Series, US Vision Diamond). Sunglasses/eyeglasses
+// collections like "Ray-Ban", "Burberry", "Eyewear Collection" etc. use
+// plain display-name strings that won't match any slug here, so the power
+// selector is automatically hidden for them.
+const LENS_COLLECTION_SLUGS = collections.map((c) => c.slug)
+const POWER_OPTIONS = Array.from({ length: 9 }, (_, i) => i) // 0 to 8
 
 export default function ProductDetail() {
   const { id } = useParams()
@@ -15,14 +24,18 @@ export default function ProductDetail() {
   const { addItem } = useCart()
 
   const [qty, setQty] = useState(1)
+  const [power, setPower] = useState('0')
   const [added, setAdded] = useState(false)
   const [selectedImage, setSelectedImage] = useState(product?.image)
+
+  const isLens = LENS_COLLECTION_SLUGS.includes(product?.collection)
 
   // Reset selected image when product changes
   useEffect(() => {
     if (product) {
       setSelectedImage(product.image)
       setQty(1)
+      setPower('0')
       setAdded(false)
 
       document.title = `${product.name} | Eyes n Optiks`
@@ -44,7 +57,7 @@ export default function ProductDetail() {
     .slice(0, 4)
 
   function handleAddToCart() {
-    addItem(product.id, qty)
+    addItem(product.id, qty, isLens ? { power } : undefined)
     setAdded(true)
 
     setTimeout(() => {
@@ -160,7 +173,7 @@ export default function ProductDetail() {
 
             <div className="product-detail__divider" />
 
-            {/* Quantity + Actions */}
+            {/* Quantity + Power + Actions */}
             <div className="product-detail__purchase">
 
               <div className="product-detail__qty">
@@ -187,6 +200,25 @@ export default function ProductDetail() {
                   </button>
                 </div>
               </div>
+
+              {isLens && (
+                <div className="product-detail__power">
+                  <label htmlFor="power-select">Power</label>
+
+                  <select
+                    id="power-select"
+                    className="product-detail__power-select"
+                    value={power}
+                    onChange={(e) => setPower(e.target.value)}
+                  >
+                    {POWER_OPTIONS.map((p) => (
+                      <option key={p} value={p}>
+                        {p}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              )}
 
               <button
                 type="button"

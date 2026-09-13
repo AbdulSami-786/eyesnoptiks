@@ -23,6 +23,8 @@ export default function Contact() {
     window.open(buildWhatsAppLink(lines.join('\n')), '_blank', 'noreferrer')
   }
 
+  const shopPhotos = ['/shop-1.jpeg', '/shop-2.jpeg', '/shop-3.jpeg']
+
   return (
     <div className="contact-page">
       <div className="contact-hero">
@@ -132,6 +134,24 @@ export default function Contact() {
               Send via WhatsApp
             </button>
           </form>
+        </div>
+      </section>
+
+      <section className="section shop-gallery">
+        <div className="container">
+          <h2>Visit Our Shop</h2>
+          <div className="shop-gallery__grid">
+            {shopPhotos.map((src, i) => (
+              <div className="shop-gallery__item" key={src}>
+                <img
+                  src={src}
+                  alt={`Eyes n Optiks shop photo ${i + 1}`}
+                  className="shop-gallery__img"
+                  loading="lazy"
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

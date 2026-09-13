@@ -8,7 +8,14 @@
   display: grid;
   grid-template-columns: 1.6fr 1fr 1fr 1.3fr;
   gap: 40px;
-  padding: 56px 20px 40px;
+  padding: 72px 20px 40px;
+  align-items: start;
+}
+
+.site-footer__brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .site-footer__brand img {
@@ -20,8 +27,9 @@
 
 .site-footer__brand p {
   font-size: 0.9rem;
+  line-height: 1.6;
   max-width: 320px;
-  margin-bottom: 20px;
+  margin: 0 0 20px;
 }
 
 .site-footer__social {
@@ -45,18 +53,35 @@
   background: var(--color-primary);
 }
 
+.site-footer__col {
+  display: flex;
+  flex-direction: column;
+}
+
 .site-footer h4 {
   color: var(--color-white);
   font-size: 1rem;
-  margin-bottom: 18px;
+  line-height: 1;
+  margin: 0 0 20px;
+}
+
+.site-footer__col ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .site-footer__col ul li {
   margin-bottom: 10px;
 }
 
+.site-footer__col ul li:last-child {
+  margin-bottom: 0;
+}
+
 .site-footer__col ul a {
   font-size: 0.9rem;
+  line-height: 1.4;
   transition: color 0.15s ease;
 }
 
@@ -64,17 +89,27 @@
   color: var(--color-white);
 }
 
+.site-footer__contact {
+  margin: 0 0 6px;
+  padding: 0;
+  list-style: none;
+}
+
 .site-footer__contact li {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 10px;
   font-size: 0.88rem;
+  line-height: 1.4;
   margin-bottom: 14px;
+}
+
+.site-footer__contact li:last-child {
+  margin-bottom: 0;
 }
 
 .site-footer__contact svg {
   flex-shrink: 0;
-  margin-top: 2px;
   color: var(--color-primary);
 }
 
@@ -83,7 +118,7 @@
 }
 
 .site-footer__hours {
-  margin-top: 6px;
+  margin-top: 20px;
   padding-top: 14px;
   border-top: 1px solid var(--color-charcoal);
   font-size: 0.85rem;
@@ -92,8 +127,13 @@
 .site-footer__hours div {
   display: flex;
   justify-content: space-between;
+  align-items: baseline;
   gap: 12px;
   margin-bottom: 6px;
+}
+
+.site-footer__hours div:last-child {
+  margin-bottom: 0;
 }
 
 .site-footer__bottom {
@@ -124,6 +164,29 @@
   .site-footer__grid {
     grid-template-columns: 1fr;
     gap: 32px;
+  }
+
+  .site-footer__brand {
+    align-items: center;
+    text-align: center;
+  }
+
+  .site-footer__brand p {
+    max-width: none;
+  }
+
+  .site-footer__col {
+    align-items: center;
+    text-align: center;
+  }
+
+  .site-footer__contact li {
+    justify-content: center;
+  }
+
+  .site-footer__hours div {
+    justify-content: center;
+    gap: 20px;
   }
 
   .site-footer__bottom-inner {
