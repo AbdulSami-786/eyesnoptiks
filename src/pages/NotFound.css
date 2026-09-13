@@ -1,0 +1,35 @@
+.not-found {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+}
+
+.not-found__inner {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.not-found__code {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: clamp(4rem, 12vw, 7rem);
+  font-weight: 800;
+  color: var(--color-primary);
+  line-height: 1;
+}
+
+.not-found__inner h1 {
+  margin: 12px 0;
+}
+
+.not-found__inner p {
+  color: var(--color-grey-600);
+  margin-bottom: 28px;
+}
+
+.not-found__actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
