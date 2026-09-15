@@ -1,4 +1,6 @@
 .product-card {
+  container-type: inline-size;
+  container-name: product-card;
   background: var(--color-white);
   border-radius: var(--radius-lg);
   overflow: hidden;
@@ -118,6 +120,27 @@
   gap: 8px;
 }
 
+/* Stack price/actions once the card itself gets narrow — keyed to the
+   card's own rendered width via a container query, not the viewport, so it
+   self-corrects in any grid (2-col, 3-col, sidebar layouts, etc.) instead of
+   needing a matching viewport breakpoint in every page that uses this card. */
+@container product-card (max-width: 230px) {
+  .product-card__footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .product-card__actions {
+    flex-direction: column;
+    justify-content: stretch;
+  }
+
+  .product-card__actions .btn {
+    flex: 1;
+  }
+}
+
 @media (max-width: 480px) {
   .product-card__body {
     padding: 14px;
@@ -130,19 +153,5 @@
   .product-card__desc {
     font-size: 0.82rem;
     margin-bottom: 12px;
-  }
-
-  .product-card__footer {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 8px;
-  }
-
-  .product-card__actions {
-    justify-content: stretch;
-  }
-
-  .product-card__actions .btn {
-    flex: 1;
   }
 }

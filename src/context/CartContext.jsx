@@ -11,10 +11,16 @@ function readStoredCart() {
     if (!raw) return []
     const parsed = JSON.parse(raw)
     if (!Array.isArray(parsed)) return []
-    return parsed.filter((item) => item && typeof item.id === 'string' && typeof item.qty === 'number')
+    return parsed.filter(
+      (item) => item && typeof item.lineId === 'string' && typeof item.id === 'string' && typeof item.qty === 'number',
+    )
   } catch {
     return []
   }
+}
+
+function makeLineId() {
+  return `${Date.now()}-${Math.random().toString(36).slice(2, 9)}`
 }
 
 export function CartProvider({ children }) {
@@ -29,25 +35,22 @@ export function CartProvider({ children }) {
     }
   }, [items])
 
-  const addItem = useCallback((productId, qty = 1) => {
-    setItems((prev) => {
-      const existing = prev.find((i) => i.id === productId)
-      if (existing) {
-        return prev.map((i) => (i.id === productId ? { ...i, qty: i.qty + qty } : i))
-      }
-      return [...prev, { id: productId, qty }]
-    })
+  // Each add-to-cart creates its own line — a prescription is specific to one
+  // order of that product, so identical products with different prescriptions
+  // must stay as separate lines rather than merging quantities.
+  const addItem = useCallback((productId, qty = 1, prescription = null) => {
+    setItems((prev) => [...prev, { lineId: makeLineId(), id: productId, qty, prescription }])
     setIsOpen(true)
   }, [])
 
-  const removeItem = useCallback((productId) => {
-    setItems((prev) => prev.filter((i) => i.id !== productId))
+  const removeItem = useCallback((lineId) => {
+    setItems((prev) => prev.filter((i) => i.lineId !== lineId))
   }, [])
 
-  const setQty = useCallback((productId, qty) => {
+  const setQty = useCallback((lineId, qty) => {
     setItems((prev) => {
-      if (qty <= 0) return prev.filter((i) => i.id !== productId)
-      return prev.map((i) => (i.id === productId ? { ...i, qty } : i))
+      if (qty <= 0) return prev.filter((i) => i.lineId !== lineId)
+      return prev.map((i) => (i.lineId === lineId ? { ...i, qty } : i))
     })
   }, [])
 

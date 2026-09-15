@@ -22,7 +22,7 @@ export default function ProductCard({ product }) {
         {!loaded && <div className="product-card__skeleton skeleton" />}
         <img
           src={product.image}
-          alt={`${product.name} colored contact lens`}
+          alt={product.name}
           loading="lazy"
           onLoad={() => setLoaded(true)}
           style={{ opacity: loaded ? 1 : 0 }}

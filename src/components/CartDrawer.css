@@ -120,8 +120,14 @@
 .cart-drawer__item-price {
   font-size: 0.82rem;
   color: var(--color-primary);
-  margin: 0 0 8px;
+  margin: 0 0 4px;
   font-weight: 600;
+}
+
+.cart-drawer__item-rx {
+  font-size: 0.74rem;
+  color: var(--color-grey-400);
+  margin: 0 0 8px;
 }
 
 .cart-drawer__qty {

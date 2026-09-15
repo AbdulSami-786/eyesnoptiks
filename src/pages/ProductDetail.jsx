@@ -9,34 +9,39 @@ import {
 import { useCart } from '../context/CartContext'
 import ProductCard from '../components/ProductCard'
 import SEO, { SITE_URL } from '../components/SEO'
+import PrescriptionForm, { emptyPrescription } from '../components/PrescriptionForm'
 import './ProductDetail.css'
 
-// Only contact lens collections (Diamond, Elite, Glow, Natural, One Day,
-// Gold Series, US Vision Diamond) show a power selector — sunglasses and
-// eyeglasses/frames are not sold by lens power.
+// Contact lens collections (Diamond, Elite, Glow, Natural, One Day, Gold
+// Series, US Vision Diamond) take a contact lens prescription (Sph/Cyl/Axis/
+// Dia/BC/Colour per eye). Sunglasses and eyeglasses/frames take a spectacles
+// prescription (Sph/Cyl/Axis for Dist/Mid/Add per eye) instead.
 const LENS_COLLECTION_SLUGS = lensCollections.map((c) => c.slug)
-const POWER_OPTIONS = Array.from({ length: 9 }, (_, i) => i) // 0 to 8
+const PRESCRIPTION_COLLECTION_SLUGS = [...LENS_COLLECTION_SLUGS, 'sunglasses', 'eyeglasses']
 
 export default function ProductDetail() {
   const { id } = useParams()
   const product = getProductById(id)
   const { addItem } = useCart()
 
+  const isLens = LENS_COLLECTION_SLUGS.includes(product?.collection)
+  const takesPrescription = PRESCRIPTION_COLLECTION_SLUGS.includes(product?.collection)
+  const prescriptionType = isLens ? 'lens' : 'spectacle'
+
   const [qty, setQty] = useState(1)
-  const [power, setPower] = useState('0')
+  const [prescription, setPrescription] = useState(() => emptyPrescription(prescriptionType))
   const [added, setAdded] = useState(false)
   const [selectedImage, setSelectedImage] = useState(product?.image)
-
-  const isLens = LENS_COLLECTION_SLUGS.includes(product?.collection)
 
   // Reset selected image when product changes
   useEffect(() => {
     if (product) {
       setSelectedImage(product.image)
       setQty(1)
-      setPower('0')
+      setPrescription(emptyPrescription(prescriptionType))
       setAdded(false)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [product])
 
   if (!product) {
@@ -50,7 +55,7 @@ export default function ProductDetail() {
     .slice(0, 4)
 
   function handleAddToCart() {
-    addItem(product.id, qty, isLens ? { power } : undefined)
+    addItem(product.id, qty, takesPrescription ? prescription : null)
     setAdded(true)
 
     setTimeout(() => {
@@ -192,7 +197,7 @@ export default function ProductDetail() {
 
             <div className="product-detail__divider" />
 
-            {/* Quantity + Power + Actions */}
+            {/* Quantity + Prescription + Actions */}
             <div className="product-detail__purchase">
 
               <div className="product-detail__qty">
@@ -220,22 +225,9 @@ export default function ProductDetail() {
                 </div>
               </div>
 
-              {isLens && (
-                <div className="product-detail__power">
-                  <label htmlFor="power-select">Power</label>
-
-                  <select
-                    id="power-select"
-                    className="product-detail__power-select"
-                    value={power}
-                    onChange={(e) => setPower(e.target.value)}
-                  >
-                    {POWER_OPTIONS.map((p) => (
-                      <option key={p} value={p}>
-                        {p}
-                      </option>
-                    ))}
-                  </select>
+              {takesPrescription && (
+                <div className="product-detail__prescription">
+                  <PrescriptionForm type={prescriptionType} value={prescription} onChange={setPrescription} />
                 </div>
               )}
 
@@ -274,7 +266,7 @@ export default function ProductDetail() {
                 <TruckIcon />
                 <div>
                   <strong>WhatsApp delivery</strong>
-                  <span>We'll confirm your order and arrange delivery directly</span>
+                  <span>We&rsquo;ll confirm your order and arrange delivery directly</span>
                 </div>
               </div>
 
@@ -282,7 +274,7 @@ export default function ProductDetail() {
                 <SupportIcon />
                 <div>
                   <strong>Practitioner support</strong>
-                  <span>Questions about fit or wear? We're here to help</span>
+                  <span>Questions about fit or wear? We&rsquo;re here to help</span>
                 </div>
               </div>
 

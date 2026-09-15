@@ -111,6 +111,12 @@
 .checkout-summary__name {
   font-weight: 600;
   font-size: 0.9rem;
+  margin: 0 0 4px;
+}
+
+.checkout-summary__rx {
+  font-size: 0.76rem;
+  color: var(--color-grey-400);
   margin: 0 0 8px;
 }
 

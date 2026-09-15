@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useCart } from '../context/CartContext'
+import { isPrescriptionFilled } from './PrescriptionForm'
 import './CartDrawer.css'
 
 export default function CartDrawer() {
@@ -44,24 +45,29 @@ export default function CartDrawer() {
           <>
             <ul className="cart-drawer__list">
               {items.map((item) => (
-                <li key={item.id} className="cart-drawer__item">
+                <li key={item.lineId} className="cart-drawer__item">
                   <img src={item.product.image} alt={item.product.name} />
                   <div className="cart-drawer__item-info">
                     <p className="cart-drawer__item-name">{item.product.name}</p>
                     <p className="cart-drawer__item-price">Rs. {item.product.price}/-</p>
+                    {item.prescription && (
+                      <p className="cart-drawer__item-rx">
+                        {isPrescriptionFilled(item.prescription) ? 'Prescription attached' : 'No prescription'}
+                      </p>
+                    )}
                     <div className="cart-drawer__qty">
-                      <button onClick={() => setQty(item.id, item.qty - 1)} aria-label="Decrease quantity">
+                      <button onClick={() => setQty(item.lineId, item.qty - 1)} aria-label="Decrease quantity">
                         −
                       </button>
                       <span>{item.qty}</span>
-                      <button onClick={() => setQty(item.id, item.qty + 1)} aria-label="Increase quantity">
+                      <button onClick={() => setQty(item.lineId, item.qty + 1)} aria-label="Increase quantity">
                         +
                       </button>
                     </div>
                   </div>
                   <button
                     className="cart-drawer__remove"
-                    onClick={() => removeItem(item.id)}
+                    onClick={() => removeItem(item.lineId)}
                     aria-label={`Remove ${item.product.name}`}
                   >
                     <TrashIcon />

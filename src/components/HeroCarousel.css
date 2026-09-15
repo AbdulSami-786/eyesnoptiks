@@ -87,7 +87,12 @@
 
 @media (max-width: 780px) {
   .hero-carousel {
-    aspect-ratio: 4 / 5;
+    aspect-ratio: 4 / 3;
+    background: #f3ede4;
+  }
+
+  .hero-carousel__slide img {
+    object-fit: contain;
   }
 
   .hero-carousel__arrow {
@@ -98,6 +103,6 @@
 
 @media (max-width: 480px) {
   .hero-carousel {
-    aspect-ratio: 3 / 4;
+    aspect-ratio: 1 / 1;
   }
 }

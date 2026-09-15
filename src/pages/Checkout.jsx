@@ -3,6 +3,7 @@ import { Link, Navigate } from 'react-router-dom'
 import { useCart } from '../context/CartContext'
 import { buildWhatsAppLink, buildCartOrderMessage } from '../data/siteConfig'
 import SEO from '../components/SEO'
+import { isPrescriptionFilled, formatPrescriptionLines } from '../components/PrescriptionForm'
 import './Checkout.css'
 
 export default function Checkout() {
@@ -17,7 +18,7 @@ export default function Checkout() {
 
   function handleSubmit(e) {
     e.preventDefault()
-    const message = buildCartOrderMessage(items, totalPrice, customer)
+    const message = buildCartOrderMessage(items, totalPrice, customer, formatPrescriptionLines)
     window.open(buildWhatsAppLink(message), '_blank', 'noreferrer')
     setPlaced(true)
     clearCart()
@@ -124,16 +125,21 @@ export default function Checkout() {
           <h2>Order Summary ({totalQty} item{totalQty !== 1 ? 's' : ''})</h2>
           <ul className="checkout-summary__list">
             {items.map((item) => (
-              <li key={item.id} className="checkout-summary__item">
+              <li key={item.lineId} className="checkout-summary__item">
                 <img src={item.product.image} alt={item.product.name} />
                 <div className="checkout-summary__info">
                   <p className="checkout-summary__name">{item.product.name}</p>
+                  {item.prescription && (
+                    <p className="checkout-summary__rx">
+                      {isPrescriptionFilled(item.prescription) ? 'Prescription attached' : 'No prescription'}
+                    </p>
+                  )}
                   <div className="checkout-summary__qty">
-                    <button type="button" onClick={() => setQty(item.id, item.qty - 1)} aria-label="Decrease quantity">
+                    <button type="button" onClick={() => setQty(item.lineId, item.qty - 1)} aria-label="Decrease quantity">
                       −
                     </button>
                     <span>{item.qty}</span>
-                    <button type="button" onClick={() => setQty(item.id, item.qty + 1)} aria-label="Increase quantity">
+                    <button type="button" onClick={() => setQty(item.lineId, item.qty + 1)} aria-label="Increase quantity">
                       +
                     </button>
                   </div>
@@ -143,7 +149,7 @@ export default function Checkout() {
                   <button
                     type="button"
                     className="checkout-summary__remove"
-                    onClick={() => removeItem(item.id)}
+                    onClick={() => removeItem(item.lineId)}
                     aria-label={`Remove ${item.product.name}`}
                   >
                     Remove

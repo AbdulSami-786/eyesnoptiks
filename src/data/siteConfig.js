@@ -46,11 +46,14 @@ export function buildGeneralInquiryMessage() {
   return `Hello Eyes n Optiks! I have a question about your products.`
 }
 
-export function buildCartOrderMessage(items, totalPrice, customer = {}) {
+export function buildCartOrderMessage(items, totalPrice, customer = {}, formatPrescriptionLines) {
   const lines = ['Hello Eyes n Optiks! I would like to place an order:', '']
 
   items.forEach((item, index) => {
     lines.push(`${index + 1}. *${item.product.name}* x${item.qty} — Rs. ${item.product.price * item.qty}/-`)
+    if (item.prescription && formatPrescriptionLines) {
+      formatPrescriptionLines(item.prescription).forEach((line) => lines.push(`   ${line}`))
+    }
   })
 
   lines.push('', `*Total: Rs. ${totalPrice}/-*`, '')
