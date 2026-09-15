@@ -1,7 +1,8 @@
 // Product catalog for Eyes n Optiks
-// Lens prices vary per collection; One Day Collection uses the shared PRICE constant below.
+// Lens prices vary per collection; One Day Collection uses the shared PRICE
+// constant below — Rs. 4800 per box, each box containing 3 pairs.
 
-export const PRICE = 1200
+export const PRICE = 4800
 
 export const collections = [
   {
@@ -31,7 +32,7 @@ export const collections = [
   {
     slug: 'oneday',
     name: 'One Day Collection',
-    tagline: 'Fresh daily-wear lenses, a new pair every day',
+    tagline: 'Fresh daily-wear lenses, 3 pairs per box',
     type: 'lens',
   },
   {
@@ -453,7 +454,7 @@ export const products = [
     image: img(44),
     price: PRICE,
     description:
-      'A cool-toned ashy brown in a convenient daily-wear lens — fresh, hygienic comfort with a soft natural finish, one pair per day.',
+      'A cool-toned ashy brown in a convenient daily-wear lens — fresh, hygienic comfort with a soft natural finish, 3 pairs per box.',
     tags: ['brown', 'daily wear'],
   },
   {
