@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /checkout
+
+Sitemap: https://eyesnoptiks.com/sitemap.xml

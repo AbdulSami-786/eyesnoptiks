@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import SEO from '../components/SEO'
 import './FAQ.css'
 
 const faqs = [
@@ -8,8 +9,8 @@ const faqs = [
     a: 'Browse our collections, open the product you like, and tap "Order Now on WhatsApp". This opens WhatsApp with your selected shade and price pre-filled — just send it and our team will confirm your order.',
   },
   {
-    q: 'Is every lens really Rs. 1200/-?',
-    a: 'Yes. Every box across all five collections — Diamond, Elite, Glow, Natural and One Day — is priced at a flat Rs. 1200/-, so there is no confusion when choosing a shade.',
+    q: 'How much do the lenses cost?',
+    a: 'Price varies by collection — you can see the exact price on every product card and product page before you order, with no hidden charges.',
   },
   {
     q: 'Do I need an eye test before buying colored lenses?',
@@ -25,15 +26,39 @@ const faqs = [
   },
   {
     q: 'Can I return or exchange a product?',
-    a: 'Please contact us on WhatsApp as soon as possible if there is an issue with your order. Sealed hygiene products like contact lenses can only be exchanged if there is a genuine defect.',
+    a: 'Please contact us on WhatsApp as soon as possible if there is an issue with your order. Sealed hygiene products like contact lenses can only be exchanged if there is a genuine defect. Sunglasses and eyeglasses can be exchanged if there is a manufacturing defect.',
+  },
+  {
+    q: 'Do you sell sunglasses and eyeglasses too?',
+    a: 'Yes — alongside colored contact lenses, we carry a range of designer-inspired sunglasses and prescription-ready eyeglasses. Browse the Sunglasses and Eyeglasses & Frames collections on our shop page.',
   },
 ]
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.a,
+    },
+  })),
+}
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState(0)
 
   return (
     <div className="faq-page">
+      <SEO
+        title="Frequently Asked Questions"
+        description="Answers to common questions about ordering, pricing, eye testing and lens care at Eyes n Optiks."
+        path="/faq"
+        jsonLd={faqJsonLd}
+      />
+
       <div className="faq-hero">
         <div className="container">
           <span className="badge badge-primary">Help Center</span>

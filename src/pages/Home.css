@@ -1,57 +1,34 @@
 .hero {
   position: relative;
-  min-height: 640px;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  color: var(--color-white);
-  background: radial-gradient(circle at 78% 45%, #2a0508 0%, var(--color-black) 55%),
-    linear-gradient(120deg, var(--color-black) 0%, #1a0507 60%, var(--color-primary-dark) 140%);
 }
 
-.hero__decor {
-  position: absolute;
-  top: 50%;
-  right: -60px;
-  transform: translateY(-50%);
-  opacity: 0.9;
-  pointer-events: none;
+.hero__strip {
+  text-align: center;
+  padding-top: 40px;
+  padding-bottom: 44px;
 }
 
-.hero__inner {
-  position: relative;
-  z-index: 1;
-  max-width: 640px;
-  padding-top: 80px;
-  padding-bottom: 80px;
+.hero__strip h1 {
+  font-size: clamp(2rem, 4.2vw, 3rem);
+  color: var(--color-black);
+  margin: 16px 0 14px;
 }
 
-.hero__eyebrow {
-  margin-bottom: 18px;
-  background: rgba(255, 255, 255, 0.15);
-  color: var(--color-white);
+.hero__strip h1 span {
+  color: var(--color-primary);
 }
 
-.hero h1 {
-  font-size: clamp(2.4rem, 5vw, 3.6rem);
-  color: var(--color-white);
-  margin-bottom: 20px;
-}
-
-.hero h1 span {
-  color: var(--color-primary-light);
-}
-
-.hero p {
+.hero__strip p {
   font-size: 1.05rem;
-  color: rgba(255, 255, 255, 0.85);
-  max-width: 520px;
-  margin-bottom: 32px;
+  color: var(--color-grey-600);
+  max-width: 560px;
+  margin: 0 auto 28px;
 }
 
 .hero__actions {
   display: flex;
   gap: 16px;
+  justify-content: center;
   flex-wrap: wrap;
 }
 
@@ -83,7 +60,7 @@
   width: 52px;
   height: 52px;
   border-radius: 50%;
-  background: rgba(193, 18, 31, 0.1);
+  background: rgba(44, 74, 110, 0.1);
   color: var(--color-primary);
   display: flex;
   align-items: center;
@@ -107,6 +84,16 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 22px;
+}
+
+.collections-grid--eyewear {
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.eyewear-section {
+  background: var(--color-white);
 }
 
 .collection-card {
@@ -162,9 +149,33 @@
   color: var(--color-primary);
 }
 
+/* Collage variant (eyewear cards showing 4 product photos) */
+
+.collection-card__collage {
+  aspect-ratio: 1 / 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 2px;
+  background: var(--color-grey-100);
+  overflow: hidden;
+}
+
+.collection-card__collage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: var(--color-white);
+  transition: transform 0.4s ease;
+}
+
+.collection-card--collage:hover .collection-card__collage img {
+  transform: scale(1.06);
+}
+
 /* -------- Bestsellers (horizontal scroll) -------- */
 
-.product-grid {
+.bestsellers-scroll {
   display: flex;
   gap: 24px;
   overflow-x: auto;
@@ -175,21 +186,21 @@
   scrollbar-color: var(--color-primary) var(--color-grey-100);
 }
 
-.product-grid::-webkit-scrollbar {
+.bestsellers-scroll::-webkit-scrollbar {
   height: 8px;
 }
 
-.product-grid::-webkit-scrollbar-track {
+.bestsellers-scroll::-webkit-scrollbar-track {
   background: var(--color-grey-100);
   border-radius: 8px;
 }
 
-.product-grid::-webkit-scrollbar-thumb {
+.bestsellers-scroll::-webkit-scrollbar-thumb {
   background: var(--color-primary);
   border-radius: 8px;
 }
 
-.product-grid > * {
+.bestsellers-scroll > * {
   flex: 0 0 auto;
   width: 240px;
   scroll-snap-align: start;
@@ -241,6 +252,221 @@
   margin: 0;
 }
 
+/* -------- Gallery -------- */
+
+.gallery-section {
+  background: var(--color-white);
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 14px;
+}
+
+.gallery-grid__item {
+  aspect-ratio: 3 / 4;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.gallery-grid__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.gallery-grid__item:hover img {
+  transform: scale(1.06);
+}
+
+/* -------- Store section -------- */
+
+.store-section__grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.store-section__photos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(2, 1fr);
+  gap: 12px;
+  height: 420px;
+  min-height: 0;
+}
+
+.store-section__photo {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  min-width: 0;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.store-section__photo--main {
+  grid-row: 1 / 3;
+  min-height: 0;
+}
+
+.store-section__content h2 {
+  margin-bottom: 14px;
+}
+
+.store-section__content p {
+  color: var(--color-grey-600);
+  margin-bottom: 20px;
+}
+
+.store-section__list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.store-section__list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--color-charcoal);
+}
+
+.store-section__list li svg {
+  flex-shrink: 0;
+  color: var(--color-primary);
+}
+
+/* -------- Testimonials -------- */
+
+.testimonials-section {
+  background: var(--color-offwhite);
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.testimonial-card {
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  padding: 26px;
+  box-shadow: var(--shadow-sm);
+  margin: 0;
+}
+
+.testimonial-card__stars {
+  display: flex;
+  gap: 3px;
+  color: var(--color-accent);
+  margin-bottom: 14px;
+}
+
+.testimonial-card blockquote {
+  margin: 0 0 18px;
+  color: var(--color-charcoal);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.testimonial-card figcaption {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.85rem;
+}
+
+.testimonial-card figcaption strong {
+  color: var(--color-black);
+}
+
+.testimonial-card figcaption span {
+  color: var(--color-grey-400);
+}
+
+/* -------- FAQ preview -------- */
+
+.faq-preview-section {
+  background: var(--color-white);
+}
+
+.faq-preview__grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.faq-preview__trust h2 {
+  margin-bottom: 20px;
+}
+
+.faq-preview__badges {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.faq-preview__badges li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  background: var(--color-offwhite);
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+
+.faq-preview__badges li svg {
+  flex-shrink: 0;
+  color: var(--color-primary);
+}
+
+.faq-preview__questions h3 {
+  font-size: 1.05rem;
+  margin-bottom: 16px;
+}
+
+.faq-preview__list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.faq-preview__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 18px;
+  background: var(--color-offwhite);
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--color-charcoal);
+  transition: background 0.15s ease;
+}
+
+.faq-preview__item:hover {
+  background: var(--color-grey-100);
+}
+
+.faq-preview__item svg {
+  flex-shrink: 0;
+  color: var(--color-primary);
+}
+
 /* -------- CTA banner -------- */
 
 .cta-banner {
@@ -279,13 +505,31 @@
   .collections-grid {
     grid-template-columns: repeat(3, 1fr);
   }
+
+  .gallery-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .store-section__grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .store-section__photos {
+    height: 340px;
+  }
+
+  .testimonials-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .faq-preview__grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
 }
 
 @media (max-width: 780px) {
-  .hero {
-    min-height: 520px;
-  }
-
   .how-it-works__grid {
     grid-template-columns: 1fr;
     gap: 16px;
@@ -295,6 +539,10 @@
     text-align: center;
     justify-content: center;
   }
+
+  .gallery-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 @media (max-width: 640px) {
@@ -302,35 +550,39 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .collections-grid--eyewear {
+    grid-template-columns: 1fr;
+    max-width: 360px;
+  }
+
   .trust-strip__grid {
     grid-template-columns: 1fr;
   }
 
-  .product-grid > * {
+  .bestsellers-scroll > * {
     width: 200px;
   }
-}
 
-@media (max-width: 780px) {
-  .hero__decor {
-    opacity: 0.5;
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
   }
 
-  .hero__inner {
-    max-width: none;
+  .store-section__photos {
+    height: auto;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 160px 160px;
   }
-}
 
-@media (max-width: 480px) {
-  .hero__decor {
-    display: none;
+  .testimonials-grid {
+    grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 420px) {
-  .hero__inner {
-    padding-top: 56px;
-    padding-bottom: 56px;
+  .hero__strip {
+    padding-top: 28px;
+    padding-bottom: 32px;
   }
 
   .hero__actions {

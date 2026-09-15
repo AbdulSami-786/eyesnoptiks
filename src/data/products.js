@@ -1,5 +1,5 @@
 // Product catalog for Eyes n Optiks
-// All prices are fixed at Rs. 1200 per box as per store policy.
+// Lens prices vary per collection; One Day Collection uses the shared PRICE constant below.
 
 export const PRICE = 1200
 
@@ -8,38 +8,60 @@ export const collections = [
     slug: 'diamond',
     name: 'Diamond Collection',
     tagline: 'Rich, jewel-toned shades with a natural sparkle',
+    type: 'lens',
   },
   {
     slug: 'elite',
     name: 'Elite Collection',
     tagline: 'Bold everyday shades for a confident look',
+    type: 'lens',
   },
   {
     slug: 'glow',
     name: 'Glow Collection',
     tagline: 'Radiant tones that light up your features',
+    type: 'lens',
   },
   {
     slug: 'natural',
     name: 'Natural Collection',
     tagline: 'Soft, subtle shades for an effortless daily look',
+    type: 'lens',
   },
   {
     slug: 'oneday',
     name: 'One Day Collection',
     tagline: 'Fresh daily-wear lenses, a new pair every day',
+    type: 'lens',
   },
   {
     slug: 'gold-series',
     name: 'Gold Series',
     tagline: 'Magic Eye silicone hydro-gel lenses for a natural, wonderland-worthy glow',
+    type: 'lens',
   },
   {
     slug: 'usvision-diamond',
     name: 'US Vision Diamond Collection',
     tagline: 'Premium silicone hydro-gel lenses with a soft, dreamy gradient finish',
+    type: 'lens',
+  },
+  {
+    slug: 'sunglasses',
+    name: 'Sunglasses',
+    tagline: 'Designer-inspired sunglasses for everyday style and sun protection',
+    type: 'eyewear',
+  },
+  {
+    slug: 'eyeglasses',
+    name: 'Eyeglasses & Frames',
+    tagline: 'Prescription-ready frames in classic and trend-forward styles',
+    type: 'eyewear',
   },
 ]
+
+export const lensCollections = collections.filter((c) => c.type === 'lens')
+export const eyewearCollections = collections.filter((c) => c.type === 'eyewear')
 
 // helper to build the image path from the extracted catalog pages
 const img = (n) => `/products/product_${String(n).padStart(2, '0')}.jpeg`
@@ -51,7 +73,7 @@ export const products = [
     name: 'Agate Brown',
     collection: 'diamond',
     image: img(3),
-    price: PRICE,
+    price: 4800,
     description:
       'A warm, honeyed brown that blends softly into dark eyes and adds a rich glow to lighter tones. Agate Brown gives a natural sun-kissed finish that works for everyday wear or a special occasion.',
     tags: ['brown', 'natural finish'],
@@ -61,7 +83,7 @@ export const products = [
     name: 'Diamond Brown',
     collection: 'diamond',
     image: img(4),
-    price: PRICE,
+    price: 4800,
     description:
       'Our signature shade — a deep, multi-tonal brown with subtle golden flecks for a bright, sparkling finish. Diamond Brown is designed to look natural even in close-up photos.',
     tags: ['brown', 'signature'],
@@ -71,7 +93,7 @@ export const products = [
     name: 'Jade Green',
     collection: 'diamond',
     image: img(5),
-    price: PRICE,
+    price: 4800,
     description:
       'A crisp emerald-green with soft grey undertones for a striking yet wearable look. Jade Green stands out beautifully against both fair and deep skin tones.',
     tags: ['green', 'bold'],
@@ -81,7 +103,7 @@ export const products = [
     name: 'Moon Stone',
     collection: 'diamond',
     image: img(6),
-    price: PRICE,
+    price: 4800,
     description:
       'A pale, silvery grey-blue shade inspired by moonstone gems. Delicate and dreamy, it gives eyes a light, luminous lift without looking artificial.',
     tags: ['grey', 'light eyes'],
@@ -91,7 +113,7 @@ export const products = [
     name: 'Wood Leaf',
     collection: 'diamond',
     image: img(7),
-    price: PRICE,
+    price: 4800,
     description:
       'An earthy hazel-green with warm wooden undertones. Wood Leaf brings a soft forest-inspired depth that flatters brown and dark eyes especially well.',
     tags: ['hazel', 'earthy'],
@@ -101,7 +123,7 @@ export const products = [
     name: 'Wood Stone',
     collection: 'diamond',
     image: img(8),
-    price: PRICE,
+    price: 4800,
     description:
       'A muted taupe-brown shade with a soft stone-like texture pattern for a natural, layered iris effect that mimics real eye depth.',
     tags: ['brown', 'natural finish'],
@@ -111,7 +133,7 @@ export const products = [
     name: 'Almond Grey',
     collection: 'diamond',
     image: img(9),
-    price: PRICE,
+    price: 4800,
     description:
       'A soft charcoal-grey with warm almond undertones, giving a smoky, sophisticated finish that works beautifully for evening looks.',
     tags: ['grey', 'smoky'],
@@ -121,7 +143,7 @@ export const products = [
     name: 'Allure Blonde',
     collection: 'diamond',
     image: img(10),
-    price: PRICE,
+    price: 4800,
     description:
       'A rare light golden-blonde shade with a bright, glassy shine. Allure Blonde is a head-turning option for those who want a dramatic change.',
     tags: ['blonde', 'bold'],
@@ -131,7 +153,7 @@ export const products = [
     name: 'Brown Shadow',
     collection: 'diamond',
     image: img(11),
-    price: PRICE,
+    price: 4800,
     description:
       'A deep chocolate brown with soft shadowed edges that blend seamlessly into your natural iris for an ultra-realistic finish.',
     tags: ['brown', 'natural finish'],
@@ -141,7 +163,7 @@ export const products = [
     name: 'Silver Mist',
     collection: 'diamond',
     image: img(12),
-    price: PRICE,
+    price: 4800,
     description:
       'A cool, misty silver-grey shade with a soft frosted look. Silver Mist adds a striking, editorial finish to any outfit.',
     tags: ['grey', 'bold'],
@@ -151,7 +173,7 @@ export const products = [
     name: 'Oak',
     collection: 'diamond',
     image: img(13),
-    price: PRICE,
+    price: 4800,
     description:
       'A rich medium brown with warm undertones, reminiscent of polished oak wood. A versatile, everyday shade that suits every skin tone.',
     tags: ['brown', 'everyday'],
@@ -161,7 +183,7 @@ export const products = [
     name: 'Mysterious',
     collection: 'diamond',
     image: img(14),
-    price: PRICE,
+    price: 4800,
     description:
       'A deep, dark grey with hints of blue that shifts subtly in different light. Mysterious is made for those who love an enigmatic, statement look.',
     tags: ['grey', 'bold'],
@@ -173,7 +195,7 @@ export const products = [
     name: 'Matt Olive',
     collection: 'elite',
     image: img(16),
-    price: PRICE,
+    price: 4800,
     description:
       'A muted olive-green with a soft matte finish for a natural, earthy look that pairs perfectly with warm makeup tones.',
     tags: ['green', 'matte'],
@@ -183,7 +205,7 @@ export const products = [
     name: 'Green Olive',
     collection: 'elite',
     image: img(17),
-    price: PRICE,
+    price: 4800,
     description:
       'A fuller, richer olive-green shade with more vibrancy than Matt Olive, giving a fresh and lively finish to your everyday look.',
     tags: ['green', 'vibrant'],
@@ -193,7 +215,7 @@ export const products = [
     name: 'Silky Grey',
     collection: 'elite',
     image: img(18),
-    price: PRICE,
+    price: 4800,
     description:
       'A smooth, silvery grey with a soft satin finish. Silky Grey is subtle enough for daily wear yet noticeably elegant.',
     tags: ['grey', 'everyday'],
@@ -203,7 +225,7 @@ export const products = [
     name: 'Cinnamon Brown',
     collection: 'elite',
     image: img(19),
-    price: PRICE,
+    price: 4800,
     description:
       'A spiced reddish-brown shade with warm depth, evoking the rich colour of cinnamon bark. Perfect for a cozy, warm-toned look.',
     tags: ['brown', 'warm'],
@@ -213,7 +235,7 @@ export const products = [
     name: 'Wild Honey',
     collection: 'elite',
     image: img(20),
-    price: PRICE,
+    price: 4800,
     description:
       'A golden amber-brown with honeyed warmth that catches the light beautifully. Wild Honey brings a soft glow to any complexion.',
     tags: ['brown', 'golden'],
@@ -223,7 +245,7 @@ export const products = [
     name: 'Emerald Green',
     collection: 'elite',
     image: img(21),
-    price: PRICE,
+    price: 4800,
     description:
       'A deep, saturated emerald shade that makes a bold statement. One of our most requested colours for special occasions and parties.',
     tags: ['green', 'bold'],
@@ -233,7 +255,7 @@ export const products = [
     name: 'Cloudy Grey',
     collection: 'elite',
     image: img(22),
-    price: PRICE,
+    price: 4800,
     description:
       'A soft, hazy grey shade reminiscent of an overcast sky. Cloudy Grey gives a gentle, understated change from your natural eye colour.',
     tags: ['grey', 'subtle'],
@@ -243,7 +265,7 @@ export const products = [
     name: 'Grey Olive',
     collection: 'elite',
     image: img(23),
-    price: PRICE,
+    price: 4800,
     description:
       'A unique blend of grey and olive tones for a multidimensional, hazel-like finish that shifts depending on the light.',
     tags: ['grey', 'hazel'],
@@ -253,7 +275,7 @@ export const products = [
     name: 'Amber Grey',
     collection: 'elite',
     image: img(24),
-    price: PRICE,
+    price: 4800,
     description:
       'A cool grey base with warm amber flecks near the pupil, creating a natural gradient effect that looks strikingly real.',
     tags: ['grey', 'natural finish'],
@@ -263,7 +285,7 @@ export const products = [
     name: 'Crystal N',
     collection: 'elite',
     image: img(25),
-    price: PRICE,
+    price: 4800,
     description:
       'A clear, crystalline light grey with a glassy shine, designed to brighten the eyes with a soft, luminous effect.',
     tags: ['grey', 'light eyes'],
@@ -273,7 +295,7 @@ export const products = [
     name: 'Mint Grey',
     collection: 'elite',
     image: img(26),
-    price: PRICE,
+    price: 4800,
     description:
       'A refreshing grey shade with the faintest hint of cool mint-green, offering a unique and fashionable colour change.',
     tags: ['grey', 'bold'],
@@ -283,7 +305,7 @@ export const products = [
     name: 'Sandy Brown',
     collection: 'elite',
     image: img(27),
-    price: PRICE,
+    price: 4800,
     description:
       'A light, warm brown reminiscent of golden sand, giving a soft and natural sun-kissed look to your eyes.',
     tags: ['brown', 'light eyes'],
@@ -293,7 +315,7 @@ export const products = [
     name: 'Sandy Grey',
     collection: 'elite',
     image: img(28),
-    price: PRICE,
+    price: 4800,
     description:
       'A warm-toned grey with sandy undertones for a soft, blended finish that suits both light and dark natural eye colours.',
     tags: ['grey', 'everyday'],
@@ -303,7 +325,7 @@ export const products = [
     name: 'Silky Green',
     collection: 'elite',
     image: img(29),
-    price: PRICE,
+    price: 4800,
     description:
       'A soft, smooth green shade with a subtle satin sheen. Silky Green offers a gentle pop of colour for everyday elegance.',
     tags: ['green', 'everyday'],
@@ -313,7 +335,7 @@ export const products = [
     name: 'Silky Gold',
     collection: 'elite',
     image: img(30),
-    price: PRICE,
+    price: 4800,
     description:
       'A luminous golden-brown shade with a silky, radiant finish that adds warmth and brightness to your entire look.',
     tags: ['brown', 'golden'],
@@ -323,7 +345,7 @@ export const products = [
     name: 'Grey Beige',
     collection: 'elite',
     image: img(31),
-    price: PRICE,
+    price: 4800,
     description:
       'A neutral beige-grey blend that is soft and versatile, working seamlessly with both casual and glam makeup looks.',
     tags: ['grey', 'neutral'],
@@ -333,7 +355,7 @@ export const products = [
     name: 'Lavender Grey',
     collection: 'elite',
     image: img(32),
-    price: PRICE,
+    price: 4800,
     description:
       'A dreamy grey shade with a faint lavender shimmer, perfect for those wanting a soft, romantic and slightly unconventional look.',
     tags: ['grey', 'bold'],
@@ -343,7 +365,7 @@ export const products = [
     name: 'Midnight Blue',
     collection: 'elite',
     image: img(33),
-    price: PRICE,
+    price: 4800,
     description:
       'A deep navy-blue shade with striking depth, ideal for those who want a dramatic and unforgettable eye colour transformation.',
     tags: ['blue', 'bold'],
@@ -355,7 +377,7 @@ export const products = [
     name: 'Husky Grey Green',
     collection: 'glow',
     image: img(35),
-    price: PRICE,
+    price: 4800,
     description:
       'Inspired by husky dog eyes, this rare grey-green blend gives an icy, striking finish that instantly draws attention.',
     tags: ['green', 'bold'],
@@ -365,7 +387,7 @@ export const products = [
     name: 'Radiant Brown',
     collection: 'glow',
     image: img(36),
-    price: PRICE,
+    price: 4800,
     description:
       'A glowing, multi-tonal brown designed to catch the light from every angle, giving eyes a bright and radiant finish.',
     tags: ['brown', 'radiant'],
@@ -375,7 +397,7 @@ export const products = [
     name: 'Radiant Hazelnut',
     collection: 'glow',
     image: img(37),
-    price: PRICE,
+    price: 4800,
     description:
       'A warm hazelnut shade with golden undertones and a soft glow, giving a naturally bright and lively appearance.',
     tags: ['hazel', 'radiant'],
@@ -387,7 +409,7 @@ export const products = [
     name: 'Cool Grey',
     collection: 'natural',
     image: img(39),
-    price: PRICE,
+    price: 4900,
     description:
       'A crisp, cool-toned grey designed for a natural everyday look with just enough colour change to be noticeable.',
     tags: ['grey', 'everyday'],
@@ -397,7 +419,7 @@ export const products = [
     name: 'Viola Grey',
     collection: 'natural',
     image: img(40),
-    price: PRICE,
+    price: 4900,
     description:
       'A soft grey with a faint violet undertone, offering a subtle and elegant twist on a classic neutral shade.',
     tags: ['grey', 'subtle'],
@@ -407,7 +429,7 @@ export const products = [
     name: 'Cool Hazel',
     collection: 'natural',
     image: img(41),
-    price: PRICE,
+    price: 4900,
     description:
       'A balanced hazel shade with cool green-brown tones, blending naturally with most eye colours for a subtle enhancement.',
     tags: ['hazel', 'natural finish'],
@@ -417,7 +439,7 @@ export const products = [
     name: 'Grey',
     collection: 'natural',
     image: img(42),
-    price: PRICE,
+    price: 4900,
     description:
       'A true, classic grey shade — soft, wearable and understated. A daily-wear favourite for a subtle colour change.',
     tags: ['grey', 'everyday'],
@@ -531,7 +553,7 @@ export const products = [
     name: 'Sabrine',
     collection: 'gold-series',
     image: '/products/product_gold_sabrine.jpeg',
-    price: PRICE,
+    price: 3200,
     description:
       'A soft gray-green shade from the Magic Eye Gold Series, blending a cool grey base with a whisper of green for a natural, wonderland-inspired look.',
     tags: ['green', 'natural finish'],
@@ -541,7 +563,7 @@ export const products = [
     name: 'Ocher',
     collection: 'gold-series',
     image: '/products/product_gold_ocher.jpeg',
-    price: PRICE,
+    price: 3200,
     description:
       'A warm golden-hazel shade with earthy ocher undertones, giving eyes a sun-warmed, honeyed glow that suits both light and deep skin tones.',
     tags: ['hazel', 'warm'],
@@ -551,7 +573,7 @@ export const products = [
     name: 'Lumirere Blue',
     collection: 'gold-series',
     image: '/products/product_gold_lumirere-blue.jpeg',
-    price: PRICE,
+    price: 3200,
     description:
       'A luminous sky-blue shade with a soft, glassy shimmer. Lumirere Blue brightens the eyes with a fresh, radiant pop of colour.',
     tags: ['blue', 'radiant'],
@@ -561,7 +583,7 @@ export const products = [
     name: 'Ice',
     collection: 'gold-series',
     image: '/products/product_gold_ice.jpeg',
-    price: PRICE,
+    price: 3200,
     description:
       'A cool, icy grey shade with a frosted, silvery finish. Ice delivers a striking, wintery look that stands out in any light.',
     tags: ['grey', 'bold'],
@@ -571,7 +593,7 @@ export const products = [
     name: 'Topaz',
     collection: 'gold-series',
     image: '/products/product_gold_topaz.jpeg',
-    price: PRICE,
+    price: 3200,
     description:
       'A vivid teal-green shade named for the gemstone it echoes, offering a bright, jewel-toned transformation for standout occasions.',
     tags: ['green', 'bold'],
@@ -581,7 +603,7 @@ export const products = [
     name: 'Platinum Gray',
     collection: 'gold-series',
     image: '/products/product_gold_platinum-gray.jpeg',
-    price: PRICE,
+    price: 3200,
     description:
       'A refined, light platinum-grey shade with warm undertones near the pupil, giving a soft, gradient-like depth that looks effortlessly natural.',
     tags: ['grey', 'natural finish'],
@@ -591,7 +613,7 @@ export const products = [
     name: 'Lumirere Gray',
     collection: 'gold-series',
     image: '/products/product_gold_lumirere-gray.jpeg',
-    price: PRICE,
+    price: 3200,
     description:
       'A luminous grey shade with subtle golden flecks, blending brightness and warmth for a gentle, eye-catching everyday shade.',
     tags: ['grey', 'everyday'],
@@ -601,7 +623,7 @@ export const products = [
     name: 'Crystal',
     collection: 'gold-series',
     image: '/products/product_gold_crystal.jpeg',
-    price: PRICE,
+    price: 3200,
     description:
       'A clear, crystalline light grey shade with a delicate glassy shine, designed to lift and brighten the eyes with minimal contrast.',
     tags: ['grey', 'light eyes'],
@@ -611,7 +633,7 @@ export const products = [
     name: 'Huskey Brown',
     collection: 'gold-series',
     image: '/products/product_gold_huskey-brown.jpeg',
-    price: PRICE,
+    price: 3200,
     description:
       'Inspired by husky dog eyes, this golden-brown shade with soft flecked detailing gives a rare, striking finish that draws attention.',
     tags: ['brown', 'bold'],
@@ -623,7 +645,7 @@ export const products = [
     name: 'Silk Gold',
     collection: 'usvision-diamond',
     image: '/products/product_usvision_silk-gold.jpeg',
-    price: PRICE,
+    price: 3000,
     description:
       'A smooth, silky golden-brown shade from the US Vision Diamond Collection, offering a warm and radiant everyday glow.',
     tags: ['brown', 'golden'],
@@ -633,7 +655,7 @@ export const products = [
     name: 'Cat Eye',
     collection: 'usvision-diamond',
     image: '/products/product_usvision_cat-eye.jpeg',
-    price: PRICE,
+    price: 3000,
     description:
       'A rich amber-brown shade with a bright, feline shimmer near the pupil, giving eyes a sharp, alluring cat-eye effect.',
     tags: ['brown', 'bold'],
@@ -643,7 +665,7 @@ export const products = [
     name: 'Ocean',
     collection: 'usvision-diamond',
     image: '/products/product_usvision_ocean.jpeg',
-    price: PRICE,
+    price: 3000,
     description:
       'A cool blue-grey shade reminiscent of ocean waves, with a soft dotted texture for a natural, dreamy sea-glass finish.',
     tags: ['blue', 'natural finish'],
@@ -653,7 +675,7 @@ export const products = [
     name: 'Lime Green',
     collection: 'usvision-diamond',
     image: '/products/product_usvision_lime-green.jpeg',
-    price: PRICE,
+    price: 3000,
     description:
       'A deep, saturated lime-green shade that makes a bold, confident statement, perfect for those who love a dramatic colour change.',
     tags: ['green', 'bold'],
@@ -661,7 +683,8 @@ export const products = [
 {
   id: 'rayban-white-black-sunglasses',
   name: 'White & Black Classic',
-  collection: 'Ray-Ban',
+  collection: 'sunglasses',
+  brand: 'Ray-Ban',
 
 image: '/products/sun1-1.jpeg',
 images: [
@@ -687,7 +710,8 @@ images: [
 
   name: 'Brown & Gold Classic Browline',
 
-  collection: 'Ray-Ban',
+  collection: 'sunglasses',
+  brand: 'Ray-Ban',
 
   image: '/products/sun2-1.jpeg',
 
@@ -731,7 +755,8 @@ images: [
 
   name: 'Black & Green Classic Browline',
 
-  collection: 'Ray-Ban',
+  collection: 'sunglasses',
+  brand: 'Ray-Ban',
 
   image: '/products/sun3-1.jpeg',
 
@@ -774,7 +799,8 @@ images: [
 
   name: 'Black & Dark Green Tech Browline',
 
-  collection: 'Ray-Ban',
+  collection: 'sunglasses',
+  brand: 'Ray-Ban',
 
   image: '/products/sun4-1.jpeg',
 
@@ -820,7 +846,8 @@ images: [
 
   name: 'Black & Gold Square Browline',
 
-  collection: 'Burberry',
+  collection: 'sunglasses',
+  brand: 'Burberry',
 
   image: '/products/sun5-1.jpeg',
 
@@ -867,7 +894,8 @@ images: [
 
   name: 'Grey Translucent Square Frame',
 
-  collection: 'Tom Ford',
+  collection: 'sunglasses',
+  brand: 'Tom Ford',
 
   image: '/products/sun6-1.jpeg',
 
@@ -913,7 +941,7 @@ images: [
 
   name: 'Red & Clear Two-Tone Cat-Eye',
 
-  collection: 'Eyewear Collection',
+  collection: 'eyeglasses',
 
   image: '/products/sun8-1.jpeg',
 
@@ -956,7 +984,7 @@ images: [
 {
     id: 'louis-vuitton-gunmetal-geometric-sunglasses',
     name: 'Louis Vuitton Gunmetal Geometric Sunglasses',
-    collection: 'Eyewear Collection',
+    collection: 'sunglasses',
     image: '/products/sun9-1.jpeg',
     images: [
       '/products/sun9-1.jpeg',
@@ -993,7 +1021,7 @@ images: [
   {
     id: 'prada-matte-frosted-square-sunglasses',
     name: 'Prada Frosted Clear Sport Square Sunglasses',
-    collection: 'Eyewear Collection',
+    collection: 'sunglasses',
     image: '/products/sun10-1.jpeg',
     images: [
       '/products/sun10-1.jpeg',
@@ -1029,7 +1057,7 @@ images: [
   {
     id: 'ray-ban-black-gold-double-bridge-sunglasses',
     name: 'Ray-Ban Black & Gold Double Bridge Aviator',
-    collection: 'Eyewear Collection',
+    collection: 'sunglasses',
     image: '/products/sun11-1.jpeg',
     images: [
       '/products/sun11-1.jpeg',
@@ -1065,7 +1093,7 @@ images: [
   {
     id: 'burberry-clear-browline-square-sunglasses',
     name: 'Burberry Translucent Clear Browline Sunglasses',
-    collection: 'Eyewear Collection',
+    collection: 'sunglasses',
     image: '/products/sun12-1.jpeg',
     images: [
       '/products/sun12-1.jpeg',
@@ -1102,7 +1130,7 @@ images: [
   {
     id: 'dita-gunmetal-double-bridge-aviator-sunglasses',
     name: 'Dita Gunmetal Rimless-Look Double Bridge Aviator',
-    collection: 'Eyewear Collection',
+    collection: 'sunglasses',
     image: '/products/sun13-1.jpeg',
     images: [
       '/products/sun13-1.jpeg',
@@ -1137,7 +1165,7 @@ images: [
   {
     id: 'dita-gold-black-double-bridge-sunglasses',
     name: 'Dita Gold & Black Double Bridge Aviator',
-    collection: 'Eyewear Collection',
+    collection: 'sunglasses',
     image: '/products/sun14-1.jpeg',
     images: [
       '/products/sun14-1.jpeg',
@@ -1173,7 +1201,7 @@ images: [
   {
     id: 'ray-ban-black-gold-hexagonal-sunglasses',
     name: 'Ray-Ban Black & Gold Hexagonal Rimless-Style Sunglasses',
-    collection: 'Eyewear Collection',
+    collection: 'sunglasses',
     image: '/products/sun15-1.jpeg',
     images: [
       '/products/sun15-1.jpeg',
@@ -1208,7 +1236,7 @@ images: [
   {
     id: 'versace-gunmetal-double-bridge-geometric-sunglasses',
     name: 'Versace Gunmetal Double Bridge Geometric Sunglasses',
-    collection: 'Eyewear Collection',
+    collection: 'sunglasses',
     image: '/products/sun16-1.jpeg',
     images: [
       '/products/sun16-1.jpeg',
@@ -1244,7 +1272,7 @@ images: [
   {
     id: 'silver-blue-gradient-double-bridge-sunglasses',
     name: 'Silver Blue-Gradient Double Bridge Sunglasses',
-    collection: 'Eyewear Collection',
+    collection: 'sunglasses',
     image: '/products/sun17-1.jpeg',
     images: [
       '/products/sun17-1.jpeg',
@@ -1280,7 +1308,7 @@ images: [
   {
     id: 'tom-ford-dark-tortoise-square-sunglasses',
     name: 'Tom Ford Dark Tortoise Square Sunglasses',
-    collection: 'Eyewear Collection',
+    collection: 'sunglasses',
     image: '/products/sun18-1.jpeg',
     images: [
       '/products/sun18-1.jpeg',
@@ -1317,7 +1345,7 @@ images: [
   {
     id: 'tom-ford-black-gold-clubmaster-square-sunglasses',
     name: 'Tom Ford Black & Gold Clubmaster Square Sunglasses',
-    collection: 'Eyewear Collection',
+    collection: 'sunglasses',
     image: '/products/sun19-1.jpeg',
     images: [
       '/products/sun19-1.jpeg',
@@ -1354,7 +1382,7 @@ images: [
   {
     id: 'gucci-silver-double-bridge-aviator-sunglasses',
     name: 'Gucci Silver Double Bridge Aviator Sunglasses',
-    collection: 'Eyewear Collection',
+    collection: 'sunglasses',
     image: '/products/sun20-1.jpeg',
     images: [
       '/products/sun20-1.jpeg',
@@ -1391,7 +1419,7 @@ images: [
   {
     id: 'gold-tinted-retro-hexagon-sunglasses',
     name: 'Gold Tinted Retro Hexagon Sunglasses',
-    collection: 'Eyewear Collection',
+    collection: 'sunglasses',
     image: '/products/sun21-1.jpeg',
     images: [
       '/products/sun21-1.jpeg',
@@ -1427,7 +1455,7 @@ images: [
   {
     id: 'silver-smoke-retro-hexagon-sunglasses',
     name: 'Silver Smoke Retro Hexagon Sunglasses',
-    collection: 'Eyewear Collection',
+    collection: 'sunglasses',
     image: '/products/sun22-1.jpeg',
     images: [
       '/products/sun22-1.jpeg',
@@ -1463,7 +1491,7 @@ images: [
   {
     id: 'black-wooden-temple-clubmaster-sunglasses',
     name: 'Black Wooden Temple Clubmaster Sunglasses',
-    collection: 'Eyewear Collection',
+    collection: 'sunglasses',
     image: '/products/sun24-1.jpeg',
     images: [
       '/products/sun24-1.jpeg',
@@ -1499,7 +1527,7 @@ images: [
   {
     id: 'grey-wooden-temple-clubmaster-sunglasses',
     name: 'Grey Wooden Temple Clubmaster Sunglasses',
-    collection: 'Eyewear Collection',
+    collection: 'sunglasses',
     image: '/products/sun25-1.jpeg',
     images: [
       '/products/sun25-1.jpeg',
@@ -1535,7 +1563,7 @@ images: [
   {
     id: 'clear-wooden-temple-clubmaster-sunglasses',
     name: 'Clear Wooden Temple Clubmaster Sunglasses',
-    collection: 'Eyewear Collection',
+    collection: 'sunglasses',
     image: '/products/sun26-2.jpeg',
     images: [
       '/products/sun26-2.jpeg',
@@ -1569,7 +1597,7 @@ images: [
   {
     id: 'black-double-bridge-wooden-temple-sunglasses',
     name: 'Black Double Bridge Wooden Temple Sunglasses',
-    collection: 'Eyewear Collection',
+    collection: 'sunglasses',
     image: '/products/sun27-2.jpeg',
     images: [
       '/products/sun27-2.jpeg',
@@ -1604,7 +1632,7 @@ images: [
   {
     id: 'lacoste-gold-and-navy-double-bridge-sunglasses',
     name: 'Lacoste Gold & Navy Double Bridge Sunglasses',
-    collection: 'Eyewear Collection',
+    collection: 'sunglasses',
     image: '/products/sun28-1.jpeg',
     images: [
       '/products/sun28-1.jpeg',
@@ -1641,7 +1669,7 @@ images: [
   {
     id: 'lacoste-gunmetal-and-brown-gradient-sunglasses',
     name: 'Lacoste Gunmetal & Brown Gradient Sunglasses',
-    collection: 'Eyewear Collection',
+    collection: 'sunglasses',
     image: '/products/sun29-1.jpeg',
     images: [
       '/products/sun29-1.jpeg',
@@ -1678,7 +1706,7 @@ images: [
   {
     id: 'moscot-white-browline-clubmaster-sunglasses',
     name: 'Moscot White Browline Clubmaster Sunglasses',
-    collection: 'Eyewear Collection',
+    collection: 'sunglasses',
     image: '/products/sun30-1.jpeg',
     images: [
       '/products/sun30-1.jpeg',
@@ -1714,7 +1742,7 @@ images: [
   {
     id: 'moscot-pink-crystal-clubmaster-sunglasses',
     name: 'Moscot Pink Crystal Clubmaster Sunglasses',
-    collection: 'Eyewear Collection',
+    collection: 'sunglasses',
     image: '/products/sun31-2.jpeg',
     images: [
       '/products/sun31-1.jpeg',
@@ -1752,7 +1780,7 @@ images: [
   {
     id: 'louis-vuitton-tortoise-clubmaster-sunglasses',
     name: 'Louis Vuitton Tortoise Clubmaster Sunglasses',
-    collection: 'Eyewear Collection',
+    collection: 'sunglasses',
     image: '/products/sun32-1.jpeg',
     images: [
       '/products/sun32-1.jpeg',
@@ -1789,7 +1817,7 @@ images: [
   {
     id: 'prada-gold-and-grey-square-sunglasses',
     name: 'Prada Gold & Grey Square Sunglasses',
-    collection: 'Eyewear Collection',
+    collection: 'sunglasses',
     image: '/products/sun33-1.jpeg',
     images: [
       '/products/sun33-1.jpeg',
@@ -1825,7 +1853,7 @@ images: [
   {
     id: 'sapphire-teens-crystal-pink-eyeglasses',
     name: 'Sapphire Teens Crystal Pink Eyeglasses',
-    collection: 'Eyewear Collection',
+    collection: 'eyeglasses',
     image: '/products/fra1-2.jpeg',
     images: [
       '/products/fra1-1.jpeg',
@@ -1862,7 +1890,7 @@ images: [
   {
     id: 'sapphire-teens-translucent-grey-eyeglasses',
     name: 'Sapphire Teens Translucent Grey Eyeglasses',
-    collection: 'Eyewear Collection',
+    collection: 'eyeglasses',
     image: '/products/fra2-2.jpeg',
     images: [
       '/products/fra2-1.jpeg',
@@ -1898,7 +1926,7 @@ images: [
   {
     id: 'sapphire-teens-black-red-two-tone-eyeglasses',
     name: 'Sapphire Teens Black & Red Two-Tone Eyeglasses',
-    collection: 'Eyewear Collection',
+    collection: 'eyeglasses',
     image: '/products/fra3-2.jpeg',
     images: [
       '/products/fra3-1.jpeg',
@@ -1935,7 +1963,7 @@ images: [
   {
     id: 'sapphire-teens-clear-crystal-eyeglasses',
     name: 'Sapphire Teens Clear Crystal Eyeglasses',
-    collection: 'Eyewear Collection',
+    collection: 'eyeglasses',
     image: '/products/fra4-2.jpeg',
     images: [
       '/products/fra4-1.jpeg',
@@ -1970,7 +1998,7 @@ images: [
   {
     id: 'sapphire-teens-dark-tortoise-eyeglasses',
     name: 'Sapphire Teens Dark Tortoise Eyeglasses',
-    collection: 'Eyewear Collection',
+    collection: 'eyeglasses',
     image: '/products/fra5-2.jpeg',
     images: [
       '/products/fra5-1.jpeg',
@@ -2006,7 +2034,7 @@ images: [
   {
     id: 'sapphire-teens-teal-pink-ombre-cat-eye-eyeglasses',
     name: 'Sapphire Teens Teal & Pink Ombré Cat-Eye Eyeglasses',
-    collection: 'Eyewear Collection',
+    collection: 'eyeglasses',
     image: '/products/fra6-2.jpeg',
     images: [
       '/products/fra6-1.jpeg',
@@ -2044,7 +2072,7 @@ images: [
   {
     id: 'sapphire-teens-black-red-rim-square-eyeglasses',
     name: 'Sapphire Teens Black & Red Rim Square Eyeglasses',
-    collection: 'Eyewear Collection',
+    collection: 'eyeglasses',
     image: '/products/fra7-1.jpeg',
     images: [
       '/products/fra7-1.jpeg',
@@ -2081,7 +2109,7 @@ images: [
   {
     id: 'sapphire-teens-black-blue-rim-rectangular-eyeglasses',
     name: 'Sapphire Teens Black & Blue Rim Rectangular Eyeglasses',
-    collection: 'Eyewear Collection',
+    collection: 'eyeglasses',
     image: '/products/fra8-1.jpeg',
     images: [
       '/products/fra8-1.jpeg',
@@ -2118,7 +2146,7 @@ images: [
   {
     id: 'sapphire-teens-black-clear-gradient-eyeglasses',
     name: 'Sapphire Teens Black-to-Clear Gradient Eyeglasses',
-    collection: 'Eyewear Collection',
+    collection: 'eyeglasses',
     image: '/products/fra9-2.jpeg',
     images: [
       '/products/fra9-1.jpeg',
@@ -2154,7 +2182,7 @@ images: [
   {
     id: 'sapphire-teens-matte-smoke-grey-eyeglasses',
     name: 'Sapphire Teens Matte Smoke Grey Eyeglasses',
-    collection: 'Eyewear Collection',
+    collection: 'eyeglasses',
     image: '/products/fra10-2.jpeg',
     images: [
       '/products/fra10-1.jpeg',
@@ -2191,7 +2219,7 @@ images: [
   {
     id: 'sapphire-teens-classic-black-square-eyeglasses',
     name: 'Sapphire Teens Classic Black Square Eyeglasses',
-    collection: 'Eyewear Collection',
+    collection: 'eyeglasses',
     image: '/products/fra11-2.jpeg',
     images: [
       '/products/fra11-1.jpeg',
@@ -2227,7 +2255,7 @@ images: [
   {
     id: 'sapphire-teens-clear-crystal-square-eyeglasses',
     name: 'Sapphire Teens Clear Crystal Square Eyeglasses',
-    collection: 'Eyewear Collection',
+    collection: 'eyeglasses',
     image: '/products/fra12-2.jpeg',
     images: [
       '/products/fra12-1.jpeg',
@@ -2262,7 +2290,7 @@ images: [
   {
     id: 'sapphire-teens-black-red-gradient-cat-eye-eyeglasses',
     name: 'Sapphire Teens Black & Red Gradient Cat-Eye Eyeglasses',
-    collection: 'Eyewear Collection',
+    collection: 'eyeglasses',
     image: '/products/fra13-1.jpeg',
     images: [
       '/products/fra13-1.jpeg',
@@ -2299,7 +2327,7 @@ images: [
   {
     id: 'sapphire-teens-translucent-smoke-cat-eye-eyeglasses',
     name: 'Sapphire Teens Translucent Smoke Cat-Eye Eyeglasses',
-    collection: 'Eyewear Collection',
+    collection: 'eyeglasses',
     image: '/products/fra14-1.jpeg',
     images: [
       '/products/fra14-1.jpeg',
@@ -2336,7 +2364,7 @@ images: [
   {
     id: 'sapphire-teens-ocean-blue-gradient-cat-eye-eyeglasses',
     name: 'Sapphire Teens Ocean Blue Gradient Cat-Eye Eyeglasses',
-    collection: 'Eyewear Collection',
+    collection: 'eyeglasses',
     image: '/products/fra15-1.jpeg',
     images: [
       '/products/fra15-1.jpeg',
@@ -2374,7 +2402,7 @@ images: [
   {
     id: 'sapphire-teens-classic-black-cat-eye-eyeglasses',
     name: 'Sapphire Teens Classic Black Cat-Eye Eyeglasses',
-    collection: 'Eyewear Collection',
+    collection: 'eyeglasses',
     image: '/products/fra16-1.jpeg',
     images: [
       '/products/fra16-1.jpeg',
@@ -2409,7 +2437,7 @@ images: [
   {
     id: 'sapphire-teens-black-clear-gradient-square-eyeglasses',
     name: 'Sapphire Teens Black-to-Clear Gradient Square Eyeglasses',
-    collection: 'Eyewear Collection',
+    collection: 'eyeglasses',
     image: '/products/fra17-1.jpeg',
     images: [
       '/products/fra17-1.jpeg',
@@ -2445,7 +2473,7 @@ images: [
   {
     id: 'sapphire-teens-clear-grey-cat-eye-eyeglasses',
     name: 'Sapphire Teens Clear Grey Cat-Eye Eyeglasses',
-    collection: 'Eyewear Collection',
+    collection: 'eyeglasses',
     image: '/products/fra18-1.jpeg',
     images: [
       '/products/fra18-1.jpeg',
@@ -2482,7 +2510,7 @@ images: [
   {
     id: 'sapphire-teens-amber-brown-square-eyeglasses',
     name: 'Sapphire Teens Amber Brown Square Eyeglasses',
-    collection: 'Eyewear Collection',
+    collection: 'eyeglasses',
     image: '/products/fra19-1.jpeg',
     images: [
       '/products/fra19-1.jpeg',
@@ -2519,7 +2547,7 @@ images: [
   {
     id: 'sapphire-teens-blush-pink-cat-eye-eyeglasses',
     name: 'Sapphire Teens Blush Pink Cat-Eye Eyeglasses',
-    collection: 'Eyewear Collection',
+    collection: 'eyeglasses',
     image: '/products/fra20-1.jpeg',
     images: [
       '/products/fra20-1.jpeg',
@@ -2556,7 +2584,7 @@ images: [
   {
     id: 'sapphire-teens-deep-ruby-red-cat-eye-eyeglasses',
     name: 'Sapphire Teens Deep Ruby Red Cat-Eye Eyeglasses',
-    collection: 'Eyewear Collection',
+    collection: 'eyeglasses',
     image: '/products/fra21-1.jpeg',
     images: [
       '/products/fra21-1.jpeg',
@@ -2592,7 +2620,7 @@ images: [
   {
     id: 'sapphire-teens-two-tone-red-clear-cat-eye-eyeglasses',
     name: 'Sapphire Teens Two-Tone Red & Clear Cat-Eye Eyeglasses',
-    collection: 'Eyewear Collection',
+    collection: 'eyeglasses',
     image: '/products/fra22-1.jpeg',
     images: [
       '/products/fra22-1.jpeg',
@@ -2629,7 +2657,7 @@ images: [
   {
     id: 'cupra-translucent-blush-cat-eye-eyeglasses',
     name: 'Cupra Translucent Blush Cat-Eye Eyeglasses',
-    collection: 'Eyewear Collection',
+    collection: 'eyeglasses',
     image: '/products/fra23-2.jpeg',
     images: [
       '/products/fra23-1.jpeg',
@@ -2665,7 +2693,7 @@ images: [
   {
     id: 'j-edders-tortoiseshell-cat-eye-eyeglasses',
     name: "J.edder's Tortoiseshell Cat-Eye Eyeglasses",
-    collection: 'Eyewear Collection',
+    collection: 'eyeglasses',
     image: '/products/fra24-1.jpeg',
     images: [
       '/products/fra24-1.jpeg',
@@ -2699,7 +2727,7 @@ images: [
   {
     id: 'lafaale-classic-black-cat-eye-eyeglasses',
     name: 'Lafaale Classic Glossy Black Cat-Eye Eyeglasses',
-    collection: 'Eyewear Collection',
+    collection: 'eyeglasses',
     image: '/products/fra25-1.jpeg',
     images: [
       '/products/fra25-1.jpeg',

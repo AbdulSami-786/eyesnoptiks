@@ -4,18 +4,17 @@ import {
   getProductById,
   getProductsByCollection,
   getCollectionBySlug,
-  collections,
+  lensCollections,
 } from '../data/products'
 import { useCart } from '../context/CartContext'
 import ProductCard from '../components/ProductCard'
+import SEO, { SITE_URL } from '../components/SEO'
 import './ProductDetail.css'
 
-// Only these collection slugs are contact lenses (Diamond, Elite, Glow,
-// Natural, One Day, Gold Series, US Vision Diamond). Sunglasses/eyeglasses
-// collections like "Ray-Ban", "Burberry", "Eyewear Collection" etc. use
-// plain display-name strings that won't match any slug here, so the power
-// selector is automatically hidden for them.
-const LENS_COLLECTION_SLUGS = collections.map((c) => c.slug)
+// Only contact lens collections (Diamond, Elite, Glow, Natural, One Day,
+// Gold Series, US Vision Diamond) show a power selector — sunglasses and
+// eyeglasses/frames are not sold by lens power.
+const LENS_COLLECTION_SLUGS = lensCollections.map((c) => c.slug)
 const POWER_OPTIONS = Array.from({ length: 9 }, (_, i) => i) // 0 to 8
 
 export default function ProductDetail() {
@@ -37,12 +36,6 @@ export default function ProductDetail() {
       setQty(1)
       setPower('0')
       setAdded(false)
-
-      document.title = `${product.name} | Eyes n Optiks`
-    }
-
-    return () => {
-      document.title = 'Eyes n Optiks | Contact Lenses, Eye Testing & Eyewear'
     }
   }, [product])
 
@@ -73,8 +66,37 @@ export default function ProductDetail() {
 
   const selectedIndex = Math.max(0, productImages.indexOf(selectedImage))
 
+  const productJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: product.name,
+    description: product.description,
+    image: productImages.map((img) => `${SITE_URL}${img}`),
+    brand: {
+      '@type': 'Brand',
+      name: product.brand || 'Eyes n Optiks',
+    },
+    ...(collection && { category: collection.name }),
+    offers: {
+      '@type': 'Offer',
+      url: `${SITE_URL}/products/${product.id}`,
+      priceCurrency: 'PKR',
+      price: product.price,
+      availability: 'https://schema.org/InStock',
+    },
+  }
+
   return (
     <div className="product-detail">
+      <SEO
+        title={product.name}
+        description={`${product.description} Rs. ${product.price}/- — order directly on WhatsApp from Eyes n Optiks.`}
+        path={`/products/${product.id}`}
+        image={`${SITE_URL}${product.image}`}
+        type="product"
+        jsonLd={productJsonLd}
+      />
+
       <div className="container">
 
         {/* Breadcrumb */}
@@ -154,10 +176,7 @@ export default function ProductDetail() {
 
             <h1>{product.name}</h1>
 
-            <p className="product-detail__price">
-              Rs. {product.price}
-              <span></span>
-            </p>
+            <p className="product-detail__price">Rs. {product.price}/-</p>
 
             <p className="product-detail__desc">
               {product.description}

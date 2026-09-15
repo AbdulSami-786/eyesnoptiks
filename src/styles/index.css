@@ -3,18 +3,19 @@
    ============================================================ */
 
 :root {
-  --color-primary: #c1121f;
-  --color-primary-dark: #8f0d17;
-  --color-primary-light: #e63946;
-  --color-black: #111114;
-  --color-charcoal: #1c1c22;
+  --color-primary: #2c4a6e;
+  --color-primary-dark: #1d3450;
+  --color-primary-light: #4d7099;
+  --color-accent: #b8860b;
+  --color-black: #0f1720;
+  --color-charcoal: #16232f;
   --color-white: #ffffff;
-  --color-offwhite: #f7f7f9;
-  --color-grey-100: #f1f1f4;
-  --color-grey-200: #e4e4e9;
-  --color-grey-400: #9a9aa5;
-  --color-grey-600: #5c5c66;
-  --color-grey-800: #2b2b32;
+  --color-offwhite: #f6f8fa;
+  --color-grey-100: #eef1f4;
+  --color-grey-200: #dde3e9;
+  --color-grey-400: #94a1ac;
+  --color-grey-600: #57646f;
+  --color-grey-800: #2a343d;
 
   --font-heading: 'Poppins', 'Segoe UI', system-ui, sans-serif;
   --font-body: 'Inter', 'Segoe UI', system-ui, sans-serif;
@@ -23,9 +24,9 @@
   --radius-md: 12px;
   --radius-lg: 20px;
 
-  --shadow-sm: 0 1px 3px rgba(17, 17, 20, 0.08), 0 1px 2px rgba(17, 17, 20, 0.06);
-  --shadow-md: 0 4px 16px rgba(17, 17, 20, 0.10);
-  --shadow-lg: 0 12px 32px rgba(17, 17, 20, 0.16);
+  --shadow-sm: 0 1px 3px rgba(15, 23, 32, 0.08), 0 1px 2px rgba(15, 23, 32, 0.06);
+  --shadow-md: 0 4px 16px rgba(15, 23, 32, 0.10);
+  --shadow-lg: 0 12px 32px rgba(15, 23, 32, 0.16);
 
   --container-max: 1240px;
   --header-height: 76px;
@@ -233,8 +234,16 @@ ul {
 }
 
 .badge-primary {
-  background: rgba(193, 18, 31, 0.1);
+  background: rgba(44, 74, 110, 0.1);
   color: var(--color-primary);
+}
+
+/* ---------------- Product grid ---------------- */
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 24px;
 }
 
 /* ---------------- Utilities ---------------- */

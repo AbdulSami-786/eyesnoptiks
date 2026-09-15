@@ -1,42 +1,57 @@
 .products-hero {
-  background: var(--color-black);
+  position: relative;
+  background: radial-gradient(circle at 20% 20%, #1c3350 0%, var(--color-black) 55%),
+    linear-gradient(120deg, var(--color-black) 0%, #101b26 60%, var(--color-primary-dark) 140%);
   color: var(--color-white);
-  padding: 48px 0 40px;
+  padding: 56px 0 44px;
   text-align: center;
+  overflow: hidden;
 }
 
 .products-hero h1 {
   color: var(--color-white);
-  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-  margin: 14px 0 8px;
+  font-size: clamp(1.9rem, 3.5vw, 2.7rem);
+  margin: 14px 0 10px;
 }
 
 .products-hero p {
-  color: var(--color-grey-400);
+  color: rgba(255, 255, 255, 0.75);
   margin: 0;
+  font-size: 1rem;
 }
 
 .products-layout {
   display: grid;
-  grid-template-columns: 260px 1fr;
-  gap: 36px;
-  padding-top: 40px;
+  grid-template-columns: 272px 1fr;
+  gap: 32px;
+  padding-top: 32px;
   padding-bottom: 64px;
   align-items: start;
 }
 
 .products-filters {
   position: sticky;
-  top: calc(var(--header-height) + 90px);
+  top: calc(var(--header-height) + 24px);
   background: var(--color-white);
-  border-radius: var(--radius-md);
-  padding: 22px;
+  border-radius: var(--radius-lg);
+  padding: 24px;
   box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-grey-100);
 }
 
 .products-filters h3 {
-  font-size: 1rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-grey-400);
   margin-bottom: 14px;
+}
+
+.filter-group-heading {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--color-grey-100);
 }
 
 .filter-list li {
@@ -51,12 +66,13 @@
   background: none;
   border: none;
   text-align: left;
-  padding: 10px 12px;
+  padding: 11px 12px;
   border-radius: var(--radius-sm);
-  font-size: 0.9rem;
+  font-size: 0.92rem;
   color: var(--color-grey-600);
   cursor: pointer;
   font-weight: 500;
+  transition: background 0.15s ease, color 0.15s ease;
 }
 
 .filter-list button:hover {
@@ -65,9 +81,15 @@
 }
 
 .filter-list button.is-active {
-  background: rgba(193, 18, 31, 0.1);
+  background: rgba(44, 74, 110, 0.1);
   color: var(--color-primary);
   font-weight: 700;
+}
+
+@media (min-width: 981px) {
+  .filter-list button.is-active {
+    box-shadow: inset 3px 0 0 var(--color-primary);
+  }
 }
 
 .filter-list button span {
@@ -79,7 +101,7 @@
 }
 
 .filter-list button.is-active span {
-  background: rgba(193, 18, 31, 0.15);
+  background: rgba(44, 74, 110, 0.15);
   color: var(--color-primary);
 }
 
@@ -105,7 +127,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
   flex-wrap: wrap;
 }
 
@@ -114,12 +136,18 @@
   align-items: center;
   gap: 10px;
   background: var(--color-white);
+  border: 1px solid var(--color-grey-100);
   border-radius: 999px;
-  padding: 10px 18px;
+  padding: 11px 18px;
   box-shadow: var(--shadow-sm);
   flex: 1;
   min-width: 220px;
   color: var(--color-grey-400);
+  transition: border-color 0.15s ease;
+}
+
+.products-search:focus-within {
+  border-color: var(--color-primary);
 }
 
 .products-search input {
@@ -153,18 +181,22 @@
   font-size: 0.85rem;
   color: var(--color-grey-400);
   margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--color-grey-100);
 }
 
 .products-main .product-grid {
   grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
 }
 
 .products-empty {
   text-align: center;
   padding: 60px 20px;
   background: var(--color-white);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-grey-100);
 }
 
 .products-empty h3 {
@@ -183,21 +215,17 @@
 
   .products-filters {
     position: static;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    align-items: center;
   }
 
-  .products-filters h3 {
-    width: 100%;
+  .filter-group-heading {
+    margin-top: 14px;
+    padding-top: 12px;
   }
 
   .filter-list {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    flex: 1;
   }
 
   .filter-list li {

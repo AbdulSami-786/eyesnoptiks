@@ -5,7 +5,7 @@ import './Header.css'
 
 const navLinks = [
   { to: '/', label: 'Home', end: true },
-  { to: '/products', label: 'Shop Lenses' },
+  { to: '/products', label: 'Shop' },
   { to: '/about', label: 'About Us' },
   { to: '/contact', label: 'Contact' },
 ]
@@ -40,7 +40,7 @@ export default function Header() {
       <div className="site-header__top">
         <div className="container site-header__top-inner">
           <p>Contact Lens Practitioner &amp; Computerized Eye Testing</p>
-          <p className="site-header__top-price">Every lens box — flat Rs. 1200/-</p>
+          <p className="site-header__top-price">Genuine lenses &amp; eyewear — order via WhatsApp</p>
         </div>
       </div>
 
@@ -68,7 +68,7 @@ export default function Header() {
           <form className="site-nav__search" onSubmit={handleSearch}>
             <input
               type="search"
-              placeholder="Search lens shade..."
+              placeholder="Search lenses, sunglasses, frames..."
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               aria-label="Search products"

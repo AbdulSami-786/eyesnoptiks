@@ -1,7 +1,8 @@
 import { useMemo, useState, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import { products, collections } from '../data/products'
+import { products, lensCollections, eyewearCollections, getCollectionBySlug } from '../data/products'
 import ProductCard from '../components/ProductCard'
+import SEO from '../components/SEO'
 import './Products.css'
 
 export default function Products() {
@@ -44,30 +45,60 @@ export default function Products() {
     return list
   }, [activeCollection, query, sort])
 
+  const activeCollectionMeta = activeCollection !== 'all' ? getCollectionBySlug(activeCollection) : null
+  const seoTitle = activeCollectionMeta ? activeCollectionMeta.name : 'Shop Lenses, Sunglasses & Eyeglasses'
+  const seoDescription = activeCollectionMeta
+    ? `Shop ${activeCollectionMeta.name} at Eyes n Optiks — ${activeCollectionMeta.tagline.toLowerCase()}. Genuine products, ordered directly on WhatsApp.`
+    : 'Browse the full Eyes n Optiks catalog — colored contact lenses, sunglasses and eyeglasses. Genuine, sealed products ordered directly on WhatsApp.'
+  const seoPath = activeCollection !== 'all' ? `/products?collection=${activeCollection}` : '/products'
+
   return (
     <div className="products-page">
+      <SEO title={seoTitle} description={seoDescription} path={seoPath} />
+
       <div className="products-hero">
         <div className="container">
           <span className="badge badge-primary">Full Catalog</span>
-          <h1>Shop Colored Contact Lenses</h1>
-          <p>Every shade below is priced at a simple flat rate of Rs. 1200/</p>
+          <h1>Shop Lenses, Sunglasses &amp; Frames</h1>
+          <p>Browse every shade and collection — genuine, sealed products, ordered directly on WhatsApp.</p>
         </div>
       </div>
 
       <div className="container products-layout">
         <aside className="products-filters">
-          <h3>Collections</h3>
           <ul className="filter-list">
             <li>
               <button
                 className={activeCollection === 'all' ? 'is-active' : ''}
                 onClick={() => setCollection('all')}
               >
-                All Lenses
+                All Products
                 <span>{products.length}</span>
               </button>
             </li>
-            {collections.map((c) => {
+          </ul>
+
+          <h3 className="filter-group-heading">Contact Lenses</h3>
+          <ul className="filter-list">
+            {lensCollections.map((c) => {
+              const count = products.filter((p) => p.collection === c.slug).length
+              return (
+                <li key={c.slug}>
+                  <button
+                    className={activeCollection === c.slug ? 'is-active' : ''}
+                    onClick={() => setCollection(c.slug)}
+                  >
+                    {c.name}
+                    <span>{count}</span>
+                  </button>
+                </li>
+              )
+            })}
+          </ul>
+
+          <h3 className="filter-group-heading">Eyewear</h3>
+          <ul className="filter-list">
+            {eyewearCollections.map((c) => {
               const count = products.filter((p) => p.collection === c.slug).length
               return (
                 <li key={c.slug}>
@@ -85,7 +116,7 @@ export default function Products() {
 
           <div className="filter-note">
             <h4>Need help choosing?</h4>
-            <p>Message us on WhatsApp and we&rsquo;ll help you pick the right shade and lens type for your eyes.</p>
+            <p>Message us on WhatsApp and we&rsquo;ll help you pick the right shade, frame or lens type for your eyes.</p>
           </div>
         </aside>
 
@@ -95,7 +126,7 @@ export default function Products() {
               <SearchIcon />
               <input
                 type="search"
-                placeholder="Search by shade name, e.g. Grey, Brown..."
+                placeholder="Search by name, e.g. Grey, Ray-Ban, Aviator..."
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
               />
@@ -121,7 +152,7 @@ export default function Products() {
             </div>
           ) : (
             <div className="products-empty">
-              <h3>No lenses match your search</h3>
+              <h3>No products match your search</h3>
               <p>Try a different keyword or clear your filters.</p>
               <button
                 className="btn btn-outline"

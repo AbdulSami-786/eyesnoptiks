@@ -15,8 +15,8 @@ export const siteConfig = {
   phone: '+92 3312438298',
   email: 'eyesnoptiks@yahoo.com',
 
-  // TODO: replace with your real store address
-  address: 'Address eyes n optiks black 15 Gulshan Iqbal Karachi shop number 4 shelozon senter',
+  // TODO: confirm exact plaza/center name spelling
+  address: 'Eyes n Optiks, Block 15, Gulshan-e-Iqbal, Karachi — Shop #4, Shelozon Center',
 
   // TODO: replace with real business hours
   hours: [

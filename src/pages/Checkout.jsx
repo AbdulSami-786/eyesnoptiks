@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link, Navigate } from 'react-router-dom'
 import { useCart } from '../context/CartContext'
 import { buildWhatsAppLink, buildCartOrderMessage } from '../data/siteConfig'
+import SEO from '../components/SEO'
 import './Checkout.css'
 
 export default function Checkout() {
@@ -25,6 +26,8 @@ export default function Checkout() {
   if (placed) {
     return (
       <div className="checkout-page">
+        <SEO title="Order Confirmed" description="Your order has been sent via WhatsApp." path="/checkout" noindex />
+
         <div className="container checkout-success">
           <CheckIcon />
           <h1>Order Sent on WhatsApp</h1>
@@ -51,6 +54,8 @@ export default function Checkout() {
 
   return (
     <div className="checkout-page">
+      <SEO title="Checkout" description="Review your cart and confirm your order via WhatsApp." path="/checkout" noindex />
+
       <div className="checkout-hero">
         <div className="container">
           <span className="badge badge-primary">Checkout</span>

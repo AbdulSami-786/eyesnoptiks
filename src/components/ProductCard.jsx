@@ -31,6 +31,7 @@ export default function ProductCard({ product }) {
       </Link>
 
       <div className="product-card__body">
+        {product.brand && <span className="product-card__brand">{product.brand}</span>}
         <Link to={`/products/${product.id}`} className="product-card__name">
           {product.name}
         </Link>

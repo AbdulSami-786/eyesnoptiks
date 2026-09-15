@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { siteConfig, buildWhatsAppLink } from '../data/siteConfig'
+import SEO from '../components/SEO'
 import './Contact.css'
 
 export default function Contact() {
@@ -27,6 +28,12 @@ export default function Contact() {
 
   return (
     <div className="contact-page">
+      <SEO
+        title="Contact Us"
+        description="Get in touch with Eyes n Optiks in Gulshan Iqbal, Karachi. Call, email or message us on WhatsApp for questions about lenses, frames or eye testing."
+        path="/contact"
+      />
+
       <div className="contact-hero">
         <div className="container">
           <span className="badge badge-primary">Get In Touch</span>
@@ -159,10 +166,10 @@ export default function Contact() {
         <div className="container cta-banner__inner">
           <div>
             <h2>Ready To Find Your Shade?</h2>
-            <p>Browse our full catalog of colored contact lenses.</p>
+            <p>Browse our full catalog of colored contact lenses, sunglasses and eyeglasses.</p>
           </div>
           <Link to="/products" className="btn btn-primary">
-            Shop Lenses
+            Shop Now
           </Link>
         </div>
       </section>

@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import SEO from '../components/SEO'
 import './About.css'
 
 const values = [
@@ -12,7 +13,7 @@ const values = [
   },
   {
     title: 'Honest, Fair Pricing',
-    desc: 'One flat price for every lens box means no confusion and no hidden charges.',
+    desc: 'Clear, upfront pricing on every product means no confusion and no hidden charges.',
   },
   {
     title: 'Customer-First Service',
@@ -23,6 +24,12 @@ const values = [
 export default function About() {
   return (
     <div className="about-page">
+      <SEO
+        title="About Us"
+        description="Eyes n Optiks is a contact lens practitioner and computerized eye testing centre in Gulshan Iqbal, Karachi, offering genuine colored contact lenses, sunglasses and eyeglasses."
+        path="/about"
+      />
+
       <div className="about-hero">
         <div className="container">
           <span className="badge badge-primary">Our Story</span>
@@ -34,7 +41,7 @@ export default function About() {
       <section className="section about-intro">
         <div className="container about-intro__grid">
           <div className="about-intro__media">
-            <img src="/logo.png" alt="Eyes n Optiks logo" />
+            <img src="/shop-1.jpeg" alt="Eyes n Optiks storefront in Gulshan Iqbal, Karachi" />
           </div>
           <div className="about-intro__text">
             <span className="eyebrow">Who We Are</span>
@@ -44,17 +51,17 @@ export default function About() {
               contact lenses shouldn&rsquo;t be complicated or overpriced. As a
               registered contact lens practitioner offering computerized eye
               testing, we combine professional vision care with a curated
-              range of colored contact lenses across five collections —
-              Diamond, Elite, Glow, Natural and One Day.
+              range of colored contact lenses, designer-inspired sunglasses
+              and prescription eyeglasses — all in one store.
             </p>
             <p>
-              Whether you&rsquo;re looking for a subtle daily-wear shade or a bold
-              statement colour for a special event, our team helps you find
-              the right fit, the right power, and the right look — all backed
-              by proper eye testing and honest advice.
+              Whether you&rsquo;re looking for a subtle daily-wear shade, a bold
+              statement colour, or a new pair of frames, our team helps you
+              find the right fit, the right power, and the right look — all
+              backed by proper eye testing and honest advice.
             </p>
             <Link to="/products" className="btn btn-primary">
-              Explore Our Lenses
+              Explore Our Products
             </Link>
           </div>
         </div>
