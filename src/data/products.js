@@ -1137,7 +1137,7 @@ images: [
       '/products/sun13-1.jpeg',
       '/products/sun13-2.jpeg',
     ],
-    price: 3800,
+    price: 3400,
     description:
       'A premium executive-style double-bridge frame featuring precision dark gunmetal wire rims, deep purple-grey gradient lenses, and two-tone black and clear side temples.',
     tags: [
@@ -1389,7 +1389,7 @@ images: [
       '/products/sun20-1.jpeg',
       '/products/sun20-2.jpeg',
     ],
-    price: 3500,
+    price: 2900,
     description:
       'Classic navigator aviator sunglasses framed in polished silver metal with a subtle double bridge. Complemented by blue-tinted gradient lenses and dark temples featuring iconic green-and-red web stripe detailing.',
     tags: [
