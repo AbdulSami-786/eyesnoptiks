@@ -5,6 +5,26 @@ export const LENS_FIELDS = ['sph', 'cyl', 'axis', 'dia', 'bc', 'colour']
 export const SPECTACLE_ROWS = ['dist', 'mid', 'add']
 export const SPECTACLE_FIELDS = ['sph', 'cyl', 'axis']
 
+export const SPECTACLE_LENS_TYPES = [
+  'Blue Light Glasses',
+  'Computer Glasses',
+  'Antiglare Glasses',
+  'Transition / Photochromic Glasses',
+  'Bifocal Glasses',
+  'Progressive Glasses',
+  'Matte Sunglasses',
+]
+
+export const CONTACT_LENS_TYPES = [
+  'Colored Lenses',
+  'Transparent Lenses',
+  'Daily Disposable Lenses',
+  'Bausch And Lomb Lenses',
+  'Bella Lenses',
+  'Biomedics Lenses',
+  'Silicone Hydrogel Lenses',
+]
+
 const LENS_FIELD_LABELS = { sph: 'Sph.', cyl: 'Cyl.', axis: 'Axis.', dia: 'Dia', bc: 'B.C.', colour: 'Colour' }
 const SPECTACLE_ROW_LABELS = { dist: 'Dist.', mid: 'Mid', add: 'Add' }
 
@@ -18,13 +38,12 @@ function emptySpectacleEye() {
 
 export function emptyPrescription(type) {
   if (type === 'spectacle') {
-    return { type: 'spectacle', name: '', right: emptySpectacleEye(), left: emptySpectacleEye() }
+    return { type: 'spectacle', name: '', lensType: '', right: emptySpectacleEye(), left: emptySpectacleEye() }
   }
-  return { type: 'lens', name: '', right: emptyLensEye(), left: emptyLensEye() }
+  return { type: 'lens', name: '', lensType: '', right: emptyLensEye(), left: emptyLensEye() }
 }
 
-export function isPrescriptionFilled(prescription) {
-  if (!prescription) return false
+function hasEyeData(prescription) {
   const eyes = [prescription.right, prescription.left]
   if (prescription.type === 'spectacle') {
     return eyes.some((eye) =>
@@ -34,6 +53,12 @@ export function isPrescriptionFilled(prescription) {
   return eyes.some((eye) => LENS_FIELDS.some((f) => String(eye[f] || '').trim() !== ''))
 }
 
+export function isPrescriptionFilled(prescription) {
+  if (!prescription) return false
+  if (prescription.lensType) return true
+  return hasEyeData(prescription)
+}
+
 export function formatPrescriptionLines(prescription) {
   if (!prescription || !isPrescriptionFilled(prescription)) {
     return ['Prescription: No Prescription']
@@ -41,24 +66,29 @@ export function formatPrescriptionLines(prescription) {
 
   const lines = ['Prescription:']
   if (prescription.name) lines.push(`  For: ${prescription.name}`)
+  if (prescription.lensType) {
+    lines.push(`  Lens type: ${prescription.lensType} (price to be confirmed)`)
+  }
 
-  const sides = ['right', 'left']
+  if (hasEyeData(prescription)) {
+    const sides = ['right', 'left']
 
-  if (prescription.type === 'spectacle') {
-    sides.forEach((side) => {
-      const eye = prescription[side]
-      const rowParts = SPECTACLE_ROWS.map((row) => {
-        const vals = SPECTACLE_FIELDS.map((f) => `${f.toUpperCase()} ${eye[row][f] || '-'}`).join(', ')
-        return `${SPECTACLE_ROW_LABELS[row]} (${vals})`
+    if (prescription.type === 'spectacle') {
+      sides.forEach((side) => {
+        const eye = prescription[side]
+        const rowParts = SPECTACLE_ROWS.map((row) => {
+          const vals = SPECTACLE_FIELDS.map((f) => `${f.toUpperCase()} ${eye[row][f] || '-'}`).join(', ')
+          return `${SPECTACLE_ROW_LABELS[row]} (${vals})`
+        })
+        lines.push(`  ${side === 'right' ? 'R' : 'L'}: ${rowParts.join(' | ')}`)
       })
-      lines.push(`  ${side === 'right' ? 'R' : 'L'}: ${rowParts.join(' | ')}`)
-    })
-  } else {
-    sides.forEach((side) => {
-      const eye = prescription[side]
-      const vals = LENS_FIELDS.map((f) => `${LENS_FIELD_LABELS[f]} ${eye[f] || '-'}`).join(', ')
-      lines.push(`  ${side === 'right' ? 'R' : 'L'}: ${vals}`)
-    })
+    } else {
+      sides.forEach((side) => {
+        const eye = prescription[side]
+        const vals = LENS_FIELDS.map((f) => `${LENS_FIELD_LABELS[f]} ${eye[f] || '-'}`).join(', ')
+        lines.push(`  ${side === 'right' ? 'R' : 'L'}: ${vals}`)
+      })
+    }
   }
 
   return lines
@@ -76,6 +106,10 @@ export default function PrescriptionForm({ type, value, onChange }) {
 
   function updateName(name) {
     onChange({ ...value, name })
+  }
+
+  function updateLensType(lensType) {
+    onChange({ ...value, lensType })
   }
 
   function updateLensField(side, field, val) {
@@ -125,6 +159,28 @@ export default function PrescriptionForm({ type, value, onChange }) {
             onChange={(e) => updateName(e.target.value)}
             className="prescription-form__name-input"
           />
+
+          <label className="prescription-form__name-label" htmlFor={`rx-lens-type-${type}`}>
+            Lens Type (optional)
+          </label>
+          <select
+            id={`rx-lens-type-${type}`}
+            value={value.lensType}
+            onChange={(e) => updateLensType(e.target.value)}
+            className="prescription-form__lens-type-select"
+          >
+            <option value="">Select a lens type...</option>
+            {(type === 'spectacle' ? SPECTACLE_LENS_TYPES : CONTACT_LENS_TYPES).map((lt) => (
+              <option key={lt} value={lt}>
+                {lt}
+              </option>
+            ))}
+          </select>
+          {value.lensType && (
+            <p className="prescription-form__lens-type-note">
+              Price for this lens type will be confirmed on WhatsApp.
+            </p>
+          )}
 
           {type === 'spectacle' ? (
             <div className="prescription-form__spectacle-grid">
