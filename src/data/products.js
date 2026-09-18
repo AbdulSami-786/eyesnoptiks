@@ -48,6 +48,12 @@ export const collections = [
     type: 'lens',
   },
   {
+    slug: 'eyedia',
+    name: 'Eyedia Collection',
+    tagline: 'Premium everyday shades with a soft, luminous finish',
+    type: 'lens',
+  },
+  {
     slug: 'sunglasses',
     name: 'Sunglasses',
     tagline: 'Designer-inspired sunglasses for everyday style and sun protection',
@@ -546,6 +552,168 @@ export const products = [
     description:
       'A soft green-hazel daily lens inspired by pine forest tones, offering a subtle nature-inspired colour shift for everyday wear.',
     tags: ['green', 'daily wear'],
+  },
+
+  // ---------------- Eyedia Collection ----------------
+  {
+    id: 'eyedia-violet',
+    name: 'Violet',
+    collection: 'eyedia',
+    image: img(54),
+    price: 4500,
+    description:
+      'A soft lilac-violet shade with a fine grey limbal ring, giving eyes a dreamy, luminous lift that still reads natural in daylight.',
+    tags: ['violet', 'bold'],
+  },
+  {
+    id: 'eyedia-allure-blonde',
+    name: 'Allure Blonde',
+    collection: 'eyedia',
+    image: img(55),
+    price: 4500,
+    description:
+      'A warm honey-beige blend with a subtle green edge, Allure Blonde delivers a sun-lit hazel finish that flatters brown eyes especially well.',
+    tags: ['hazel', 'natural finish'],
+  },
+  {
+    id: 'eyedia-brown-shadow',
+    name: 'Brown Shadow',
+    collection: 'eyedia',
+    image: img(56),
+    price: 4500,
+    description:
+      'A rich chocolate-brown with a softly shadowed outer ring for added depth — an effortless everyday shade that enlarges the iris naturally.',
+    tags: ['brown', 'natural finish'],
+  },
+  {
+    id: 'eyedia-gray-green',
+    name: 'Gray Green',
+    collection: 'eyedia',
+    image: img(57),
+    price: 4500,
+    description:
+      'A muted olive-green over a cool grey base, blending into the iris for a striking yet believable colour shift.',
+    tags: ['green', 'bold'],
+  },
+  {
+    id: 'eyedia-olive-gray',
+    name: 'Olive Gray',
+    collection: 'eyedia',
+    image: img(58),
+    price: 4500,
+    description:
+      'A smoky grey shade with warm olive undertones and a defined dark rim, giving a sophisticated, high-contrast finish.',
+    tags: ['grey', 'smoky'],
+  },
+  {
+    id: 'eyedia-choco',
+    name: 'Choco',
+    collection: 'eyedia',
+    image: img(59),
+    price: 4500,
+    description:
+      'A warm cocoa-brown with fine golden detailing through the iris — the softest option in the range for an everyday natural look.',
+    tags: ['brown', 'natural finish'],
+  },
+  {
+    id: 'eyedia-jade',
+    name: 'Jade',
+    collection: 'eyedia',
+    image: img(60),
+    price: 4500,
+    description:
+      'A fresh emerald-green with a honeyed centre, Jade brightens the eyes with a clear, jewel-like colour that stands out in photos.',
+    tags: ['green', 'bold'],
+  },
+  {
+    id: 'eyedia-pearl',
+    name: 'Pearl',
+    collection: 'eyedia',
+    image: img(61),
+    price: 4500,
+    description:
+      'A pale silvery-grey with a warm speckled centre and strong dark limbal ring, giving eyes a bright, pearlescent glow.',
+    tags: ['grey', 'light eyes'],
+  },
+  {
+    id: 'eyedia-blue',
+    name: 'Blue',
+    collection: 'eyedia',
+    image: img(62),
+    price: 4500,
+    description:
+      'A classic denim-blue shade with a soft brown burst around the pupil, keeping the transition into dark eyes smooth and natural.',
+    tags: ['blue', 'everyday'],
+  },
+  {
+    id: 'eyedia-dark-gray',
+    name: 'Dark Gray',
+    collection: 'eyedia',
+    image: img(63),
+    price: 4500,
+    description:
+      'A deep charcoal-grey with amber flecks radiating from the centre, offering a bold, dramatic finish for evening looks.',
+    tags: ['grey', 'smoky'],
+  },
+  {
+    id: 'eyedia-gray-shadow',
+    name: 'Gray Shadow',
+    collection: 'eyedia',
+    image: img(64),
+    price: 4500,
+    description:
+      'A soft, misty grey with a delicate shadowed edge — light and clean, giving a subtle doll-like brightness without heavy contrast.',
+    tags: ['grey', 'light eyes'],
+  },
+  {
+    id: 'eyedia-cool-blue',
+    name: 'Cool Blue',
+    collection: 'eyedia',
+    image: img(65),
+    price: 4500,
+    description:
+      'A vivid teal-blue with a warm golden ring at the centre, Cool Blue gives a striking ocean-toned transformation that holds its colour on dark eyes.',
+    tags: ['blue', 'bold'],
+  },
+  {
+    id: 'eyedia-cool-gray',
+    name: 'Cool Gray',
+    collection: 'eyedia',
+    image: img(66),
+    price: 4500,
+    description:
+      'A soft grey-green blend with a warm honey centre, finishing in a gentle gradient that looks effortless in natural light.',
+    tags: ['grey', 'natural finish'],
+  },
+  {
+    id: 'eyedia-galaxy-gray',
+    name: 'Galaxy Gray',
+    collection: 'eyedia',
+    image: img(67),
+    price: 4500,
+    description:
+      'Also known as Natural Gray — a warm taupe-grey with a fine speckled texture that mirrors real iris detail for a convincingly natural result.',
+    tags: ['grey', 'natural finish'],
+  },
+  {
+    id: 'eyedia-topazio-marine',
+    name: 'Topazio Marine',
+    collection: 'eyedia',
+    image: img(68),
+    price: 4500,
+    description:
+      'A bright aqua-turquoise with green undertones, inspired by marine topaz. The boldest shade in the range for a true statement look.',
+    tags: ['blue', 'bold'],
+  },
+  {
+    id: 'eyedia-platinum-gray',
+    name: 'Platinum Gray',
+    collection: 'eyedia',
+    image: img(69),
+    price: 4500,
+    description:
+      'A cool platinum-grey with warm amber detailing and a crisp dark rim, giving eyes a polished, luminous finish.',
+    tags: ['grey', 'smoky'],
   },
 
   // ---------------- Gold Series (Magic Eye) ----------------
